@@ -73,6 +73,8 @@ if ( isset($_POST["fn"]) )
             }
                         
             break;
+        case "":
+            break;
     }
 }
 
