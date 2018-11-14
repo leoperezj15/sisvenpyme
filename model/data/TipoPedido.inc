@@ -1,21 +1,22 @@
 <?php
 
+
 require_once "field.inc";
 
 
- class Structure_UnidadMedida
+ class Structure_TipoPedido
  {
- 	public $idUnidadMedida;
+ 	public $idtipoPedido;
  	public $nombre;
- 	public $abrev;
  	public $descripcion;
+ 	public $estado;
 
  	function __construct()
  	{
- 		$this->idUnidadMedida = new Field("int", true);
+ 		$this->idtipoPedido = new Field("int", true);
  		$this->nombre = new Field("varchar");
- 		$this->abrev = new Field("varchar");
  		$this->descripcion = new Field("varchar");
+ 		$this->estado = new Field("enum");
 
  	}
  }
