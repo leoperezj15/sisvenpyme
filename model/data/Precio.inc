@@ -9,6 +9,7 @@ class Structure_Precio
 	public $precioVenta;
 	public $fecha;
 	public $motivo;
+	public $estado;
 
 	function __construct()
 	{
@@ -17,6 +18,7 @@ class Structure_Precio
 		$this->precioVenta = new Field("float");
 		$this->fecha = new Field("datetime");
 		$this->motivo = new Field("varchar");
+		$this->motivo = new Field("enum");
 	}
 }
 ?>
