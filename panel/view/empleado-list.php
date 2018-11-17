@@ -31,7 +31,47 @@ if ( !isset($_SESSION["ACL"]) )
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="view/plugin/jquery-2.0.3.min.js"></script>
     <title>Lista de Empleados</title>
+    <script>
+        $(document).ready(function()
+        {
+            $("#btn-empleado-add").click(function()
+            {
+                
+                nombre = $("#nombre").val();
+                apPaterno = $("#apPaterno").val();
+                apMaterno = $("#apMaterno").val();
+                fechaNacimiento = $("#fechaNacimiento").val();
+                ci = $("#ci").val();
+                
+                $.ajax({
+            		type: "POST",
+            		url: "control/x-fn.php",
+            		data: "fn=Empleado-add&nombre=" + nombre  + "&apPaterno=" + apPaterno + "&apMaterno=" + apMaterno + "&fechaNacimiento=" + fechaNacimiento + "&ci=" + ci,
+            		cache: false,
+            		success: function (res){
+                        
+                        data = res.split("|");
+                        
+            			if (data[0] == "ok")
+            			{          
+                            alert(data[1]);
+                            setTimeout("reloadPage()", 10);
+            			}else{
+                            alert(data[1]);
+                            $("#nombre").focus();
+            			}
+            			
+            		}
+            	});
+            })
+        })
+        function reloadPage()
+        {
+            location.reload();
+        }
+    </script>
 </head>
 <body>
     <div class="container">
@@ -77,13 +117,13 @@ if ( !isset($_SESSION["ACL"]) )
 
                             <div class="form-group col-md-6">
                             <label for="">Fecha de Nacimiento</label>
-                            <input type="date" class="form-control" name="fechaNacimiento" placeholder="" id="FechaNacimiento" require="" required>
+                            <input type="date" class="form-control" name="fechaNacimiento" placeholder="" id="fechaNacimiento" require="" required>
                             </div>
                             
 
                             <div class="form-group col-md-4">
                             <label for="">Cedula de Identidad</label>
-                            <input type="text" class="form-control" name="ci" placeholder="" id="CI" require="" required>
+                            <input type="number" class="form-control" name="ci" placeholder="" id="ci" require="" required>
                             </div>
                             
                         </div>
@@ -93,7 +133,7 @@ if ( !isset($_SESSION["ACL"]) )
                         
                     </div>
                     <div class="modal-footer">
-                        <button value="btnAgregar" type="submit" name="accion"class="btn btn-success">Agregar</button>
+                        <button name="accion"class="btn btn-success" id="btn-empleado-add">Agregar</button>
                         <button value="btnActualizar" type="submit" name="accion" class="btn btn-warning">Actualizar</button>
                         <button value="btnEliminar" type="submit" name="accion" class="btn btn-danger">Eliminar</button>
                         <button value="btnCancelar" type="submit" name="accion" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
@@ -113,7 +153,7 @@ if ( !isset($_SESSION["ACL"]) )
                         <thead class="thead-dark">
                             <h2>Lista de Empleados</h2>
                             <tr>
-                                <th scope="col">ID Empleado</th>
+                                <th scope="col">Codigo</th>
                                 <th scope="col">Nombre(s)</th>
                                 <th scope="col">Apellido Paterno</th>
                                 <th scope="col">Apellido Materno</th>

@@ -93,12 +93,12 @@
                         <thead class="thead-dark">
                             <h2>Lista de Productos</h2>
                             <tr>
-                                <th scope="col">ID Empleado</th>
-                                <th scope="col">Nombre(s)</th>
-                                <th scope="col">Apellido Paterno</th>
-                                <th scope="col">Apellido Materno</th>
-                                <th scope="col">Fecha de Nacimiento</th>
-                                <th scope="col">Cedula de Identidad</th>
+                                <th scope="col">Codigo</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Deescripcion</th>
+                                <th scope="col">SubCategoria</th>
+                                <th scope="col">Categoria</th>
+                                <th scope="col">Precio</th>
                             </tr>
                         </thead>
                         <tbody>
