@@ -20,8 +20,8 @@ if ( isset($_SESSION["ACL"]) )
 		case "menu":
 			include_once "control/c-panel.php";
 			break;
-		case "Listar_Usuarios":
-			include_once "control/c-user-list.php";
+		case "c-producto-list":
+			include_once "control/c-producto-list.php";
 			break;
 		case "logout":
 			include_once "control/c-logout.php";

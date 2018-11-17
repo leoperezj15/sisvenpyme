@@ -100,8 +100,8 @@ $content .= "
         <?php
             echo "<b>Rol - " . $rol . "<br>";
             //echo $content;
-            //echo "<br><b>Estructura Guardada en Sesión</b><br><br>";
-            //print_r($ACL); 
+            echo "<br><b>Estructura Guardada en Sesión</b><br><br>";
+            print_r($ACL); 
         ?>
         <br>
     </div>
