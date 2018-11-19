@@ -38,6 +38,12 @@ if ( isset($_SESSION["ACL"]) )
 		case "login2":
 			include_once "control/c-login2.php";
 			break;
+		case "c-list-modulos":
+			include_once "control/c-modulo-list.php";
+			break;
+		case "c-venta-new":
+			include_once "control/c-venta-new.php";
+			break;
 		
 		default:
 			echo $mnu;

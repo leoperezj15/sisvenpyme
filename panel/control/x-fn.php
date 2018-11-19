@@ -11,6 +11,7 @@ require_once "../../model/RN_Usuario.php";
 require_once "../../model/RN_RolModulo.php";
 require_once "../../model/RN_Objeto.php";
 require_once "../../model/RN_Empleado.php";
+require_once "../../model/RN_Cliente.php";
 
 $content = "";
 
@@ -113,6 +114,21 @@ if ( isset($_POST["fn"]) )
                     
                 }
             break;
+        case "buscarCliente":
+                $nroDocumento = base64_encode($_POST["nroDocumento"]);
+                $oRN_Cliente = new RN_Cliente;
+                $oCliente = $oRN_Cliente->GetCliente($nroDocumento);
+                if($oCliente != null)
+                {
+                    $_SESSION["ClienteVenta"] = $oCliente;
+                    $content = "ok|Se encontraron datos";
+                }
+                else
+                {
+                    $content = "err|No se encontro ningun cliente";
+                }
+                
+                break;
     }
 }
 

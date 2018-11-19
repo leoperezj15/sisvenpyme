@@ -4,12 +4,7 @@
 **
 */
 
-require_once("../../model/RN_Modulo.php");
 
-$oRN_Modulo = new RN_Modulo;
-
-$listarModulos = $oRN_Modulo->GetList();
-
-include_once("view/v-user-new.php");
+include_once "view/modelo-list.php";
 
 ?>

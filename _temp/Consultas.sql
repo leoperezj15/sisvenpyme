@@ -35,3 +35,18 @@ INSERT INTO `subcategoria`(`idsubCategoria`, `nombre`, `descripcion`, `estado`, 
 (0,'Prensas','','Activo',2),
 (0,'Juego de Herramientas','','Activo',2),
 (0,'Herramientas Mecanicas','','Activo',2);
+---------------------------------------------------------------------------------------------------------------------------------------------------
+--consulta para mostrar clientes de tipo natural y juridico
+SELECT t1.idCliente AS idCliente, CONCAT(t2.nombre, ' ',t2.apPaterno, ' ' , t2.apMaterno) AS NombreCompleto, t1.ci As NroDocumento , t1.direccion Direccion, t1.telefonoCelular AS Celular, 'Natural' AS tipoCliente 
+FROM `cliente` t1
+INNER JOIN `natural` t2 on t1.idCliente = t2.idCliente
+WHERE t1.estado = 'Activo'
+UNION
+SELECT t4.idCliente AS idCliente, CONCAT(t3.razonSocial) AS NombreCompleto, t3.nit As NroDocumento , t4.direccion AS Direccion, t4.telefonoCelular AS Celular, 'Juridico' AS tipoCliente 
+FROM `cliente` t4
+INNER JOIN `juridico` t3 on t4.idCliente = t3.idCliente
+WHERE t4.estado = 'Activo'
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+--Consulta a una vista de clientes general donde se compara por nro de documento
+SELECT * FROM `view_cliente_general` WHERE NroDocumento = 9710974
+--------------------------------------------------------------------------------------------------------------------------------------------------------

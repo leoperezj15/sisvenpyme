@@ -25,9 +25,9 @@ class Structure_Natural
     function __construct()
     { 
         $this->idCliente = new Field("int", true);
- 	$this->nombre = new Field("varchar");
- 	$this->apPaterno = new Field("varchar");
- 	$this->apMaterno = new Field("varchar");
+        $this->nombre = new Field("varchar");
+        $this->apPaterno = new Field("varchar");
+        $this->apMaterno = new Field("varchar");
         $this->fechanacimiento = new Field("date");
         $this->ci = new Field("varchar");
         $this->genero = new Field("enum");
