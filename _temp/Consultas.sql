@@ -50,3 +50,32 @@ WHERE t4.estado = 'Activo'
 --Consulta a una vista de clientes general donde se compara por nro de documento
 SELECT * FROM `view_cliente_general` WHERE NroDocumento = 9710974
 --------------------------------------------------------------------------------------------------------------------------------------------------------
+--estructurapara recuperar datos de un carrito
+$lista = array();
+If ( isset($_SESSION["carrito"] ) {
+    $lista = $_SESSION["carrito"];
+}
+
+$item = array("dato1" => $dato1, "dato2" => $dato2);
+
+$lista[] = $item;
+
+$_SESSION["carrito"] = $lista;
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+--estrctura de v-panel
+<div class="card text-center"> <!--class="ctn-main"-->
+    <div class="card-header">
+        <div class="">
+        <!-- <a href="?mnu=nuevo_modulo"><input type='button' value='Nuevo Modulo' class='btn btn-primary'></a> -->
+    </div class="card-body">
+        <!-- <h2 class="card-title">Listado de Modulo y Objetos</h2> -->
+        <?php
+            echo "<b>Rol - " . $rol . "<br>";
+            //echo $content;
+            echo "<br><b>Estructura Guardada en Sesión</b><br><br>";
+            print_r($ACL); 
+        ?>
+        <br>
+    </div>
+    ------------------------------------------------------------------------------------------------------------------------------------------------------

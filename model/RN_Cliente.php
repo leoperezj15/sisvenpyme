@@ -23,7 +23,7 @@ class RN_Cliente extends DataBase
      */
     function GetCliente($_NroDocumento)
     {
-        $sql = "select * from `view_cliente_general` where NroDocumento = '".base64_decode($_NroDocumento)."'";
+        $sql = "select * from `view_cliente_general` where NroDocumento = '".$_NroDocumento."'";
         $res = $this->Execute($sql);
         
         $osClienteGeneral = new Structure_ClienteGeneral;
@@ -39,6 +39,7 @@ class RN_Cliente extends DataBase
                 $osClienteGeneral->direccion->SetValue($item["Direccion"]);
                 $osClienteGeneral->celular->SetValue($item["Celular"]);
                 $osClienteGeneral->tipoCliente->SetValue($item["tipoCliente"]);
+
             }            
         }
         

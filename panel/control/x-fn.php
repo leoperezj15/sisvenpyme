@@ -115,12 +115,27 @@ if ( isset($_POST["fn"]) )
                 }
             break;
         case "buscarCliente":
-                $nroDocumento = base64_encode($_POST["nroDocumento"]);
+                $nroDocumento = $_POST["nroDocumento"];
                 $oRN_Cliente = new RN_Cliente;
                 $oCliente = $oRN_Cliente->GetCliente($nroDocumento);
                 if($oCliente != null)
                 {
-                    $_SESSION["ClienteVenta"] = $oCliente;
+                    //$idRol  = $oUsuario->idRol->getValue();
+                    $idCliente = $oCliente->idCliente->getValue();
+                    $nombreCompleto = $oCliente->nombreCompleto->getValue();
+                    $nroDocumento = $oCliente->nroDocumento->getValue();
+                    $direccion = $oCliente->direccion->getValue();
+                    $celular = $oCliente->celular->getValue();
+                    $tipoCliente = $oCliente->tipoCliente->getValue();
+
+                    $_SESSION["ClienteVenta"] = array(
+                        "idCliente" => $idCliente, 
+                        "nombreCompleto" => $nombreCompleto,
+                        "nroDocumento" => $nroDocumento,
+                        "direccion" => $direccion,
+                        "celular" => $celular,
+                        "tipoCliente" => $tipoCliente,);
+                    
                     $content = "ok|Se encontraron datos";
                 }
                 else

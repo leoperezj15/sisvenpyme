@@ -4,7 +4,8 @@
 **
 */
 
-
+include_once "view/v-panel.php";
 include_once "view/modelo-list.php";
+include_once "view/v-footer.php";
 
 ?>

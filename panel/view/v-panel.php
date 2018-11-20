@@ -63,7 +63,73 @@ $content .= "
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>     
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script> 
+    <script src="view/plugin/jquery-2.0.3.min.js"></script>
+    <script>
+        $(document).ready(function()
+        {
+            $("#btn-empleado-add").click(function()
+            {
+                
+                nombre = $("#nombre").val();
+                apPaterno = $("#apPaterno").val();
+                apMaterno = $("#apMaterno").val();
+                fechaNacimiento = $("#fechaNacimiento").val();
+                ci = $("#ci").val();
+                
+                $.ajax({
+            		type: "POST",
+            		url: "control/x-fn.php",
+            		data: "fn=Empleado-add&nombre=" + nombre  + "&apPaterno=" + apPaterno + "&apMaterno=" + apMaterno + "&fechaNacimiento=" + fechaNacimiento + "&ci=" + ci,
+            		cache: false,
+            		success: function (res){
+                        
+                        data = res.split("|");
+                        
+            			if (data[0] == "ok")
+            			{          
+                            alert(data[1]);
+                            setTimeout("reloadPage()", 10);
+            			}else{
+                            alert(data[1]);
+                            $("#nombre").focus();
+            			}
+            			
+            		}
+            	});
+            })
+            $("#btnbuscarCliente").click(function()
+            {
+                
+                nroDocumento = $("#nroDocumento").val();
+                
+                $.ajax({
+            		type: "POST",
+            		url: "control/x-fn.php",
+            		data: "fn=buscarCliente&nroDocumento=" + nroDocumento ,
+            		cache: false,
+            		success: function (res){
+                        
+                        data = res.split("|");
+                        
+            			if (data[0] == "ok")
+            			{          
+                            alert(data[1]);
+                            setTimeout("reloadPage()", 1000);
+            			}else{
+                            alert(data[1]);
+                            $("#nroDocumento").focus();
+            			}
+            			
+            		}
+            	});
+            })
+        })
+        function reloadPage()
+        {
+            location.reload();
+        }
+    </script>  
 </head>
 
 <body class="">
@@ -90,21 +156,3 @@ $content .= "
   </div>
 </nav>
 <!--Aqui termina el menu de navegacion-->
-
-<div class="card text-center"> <!--class="ctn-main"-->
-    <div class="card-header">
-        <div class="">
-        <!-- <a href="?mnu=nuevo_modulo"><input type='button' value='Nuevo Modulo' class='btn btn-primary'></a> -->
-    </div class="card-body">
-        <!-- <h2 class="card-title">Listado de Modulo y Objetos</h2> -->
-        <?php
-            echo "<b>Rol - " . $rol . "<br>";
-            //echo $content;
-            echo "<br><b>Estructura Guardada en Sesión</b><br><br>";
-            print_r($ACL); 
-        ?>
-        <br>
-    </div>
-</div>    
-</body>
-</html>
