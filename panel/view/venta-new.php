@@ -38,7 +38,9 @@ $mostrarProducto .="";
     // echo "</pre>";
 //fin de mostrar el producto en un select
 //------------------------------------------------------------------------------------------------------------------------
-
+//Validar que se aya selecionado un cliente
+//Validar que al menos se seleciones un producto
+//Validar verificar el stock de prodectos
 if ( !isset($_SESSION["ACL"]) )
 {
     header("location: index.php");
