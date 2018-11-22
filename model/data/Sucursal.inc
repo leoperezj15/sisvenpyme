@@ -3,7 +3,7 @@
 
 require_once "field.inc";
 
-class Structure_Sucursal;
+class Structure_Sucursal
 {
 	public $idSucursal;
 	public $nombre;

@@ -7,9 +7,9 @@
  */
 
  require_once "field.inc";
- require_once "SubCategoria";
- require_once "UnidadMedida";
- require_once "Proveedor";
+ require_once "SubCategoria.inc";
+ require_once "UnidadMedida.inc";
+ require_once "Proveedor.inc";
 
 
  class Structure_Producto
@@ -22,6 +22,7 @@
  	public $estado;
  	public $peso;
  	public $madein;
+	public $stock;
  	public $idsubCategoria;
  	public $idunidadMedida;
  	public $idProveedor;
@@ -41,11 +42,12 @@
  		$this->estado = new Field("enum");
  		$this->peso = new Field("varchar");
  		$this->madein = new Field("varchar");
+		$this->stock = new Field("float");
  		$this->idsubCategoria = new Field("int");
  		$this->idunidadMedida = new Field("int");
  		$this->idProveedor = new Field("int");
 
- 		$this->Subcategoria = new Structure_SubCategoria;
+ 		$this->SubCategoria = new Structure_SubCategoria;
  		$this->UnidadMedida = new Structure_UnidadMedida;
  		$this->Proveedor = new Structure_Proveedor;
 

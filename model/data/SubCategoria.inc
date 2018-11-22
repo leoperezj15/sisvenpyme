@@ -10,7 +10,7 @@
 require_once "field.inc";
 require_once "Categoria.inc";
 
-class Structure_SubCategoria;
+class Structure_SubCategoria
 {
 	public $idSubCategoria;
 	public $nombre;

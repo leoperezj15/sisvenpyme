@@ -51,16 +51,16 @@ WHERE t4.estado = 'Activo'
 SELECT * FROM `view_cliente_general` WHERE NroDocumento = 9710974
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 --estructurapara recuperar datos de un carrito
-$lista = array();
-If ( isset($_SESSION["carrito"] ) {
-    $lista = $_SESSION["carrito"];
-}
+-- $lista = array();
+-- If ( isset($_SESSION["carrito"] ) {
+--     $lista = $_SESSION["carrito"];
+-- }
 
-$item = array("dato1" => $dato1, "dato2" => $dato2);
+-- $item = array("dato1" => $dato1, "dato2" => $dato2);
 
-$lista[] = $item;
+-- $lista[] = $item;
 
-$_SESSION["carrito"] = $lista;
+-- $_SESSION["carrito"] = $lista;
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
 --estrctura de v-panel
@@ -79,3 +79,46 @@ $_SESSION["carrito"] = $lista;
         <br>
     </div>
     ------------------------------------------------------------------------------------------------------------------------------------------------------
+    --Listar Productos con unidad de medida, subcategoria, categoria, producto precio y precio
+    SELECT t1.idProducto AS t1_idProducto,t1.descripcion AS t1_descripcion,t1.nombre AS t1_nombre,t2.abrev as t2_unidadMedida,t6.precioCompra AS t6_precioCompra,t6.precioVenta AS t6_precioVenta,t3.nombre AS t3_subCategoria,t4.nombre as t4_categoria FROM producto t1
+    INNER JOIN unidadmedida t2 ON t1.idunidadMedida=t2.idunidadMedida
+    INNER JOIN subcategoria t3 ON t1.idsubCategoria=t3.idsubCategoria
+    INNER JOIN categoria t4 ON t3.idCategoria=t4.idCategoria
+    INNER JOIN producto_precio t5 ON t1.idProducto=t5.idProducto 
+    INNER JOIN precio t6 ON t5.idPrecio=t6.idPrecio
+    WHERE t5.estado='Activo' AND t6.estado='Activo'
+    GROUP BY t1.idProducto ASC
+    ----------------------------------------------------------------------------------------------------------------------------------------------------
+    --
+SELECT t1.idProducto AS t1_idProducto,t1.descripcion AS t1_descripcion,t1.nombre AS t1_nombre,t2.abrev as t2_unidadMedida,t1.stock AS t1_Cantidad,t6.precioCompra AS t6_precioCompra,t6.precioVenta AS t6_precioVenta,t3.nombre AS t3_subCategoria,t4.nombre as t4_categoria FROM producto t1
+INNER JOIN unidadmedida t2 ON t1.idunidadMedida=t2.idunidadMedida
+INNER JOIN subcategoria t3 ON t1.idsubCategoria=t3.idsubCategoria
+INNER JOIN categoria t4 ON t3.idCategoria=t4.idCategoria
+INNER JOIN producto_precio t5 ON t1.idProducto=t5.idProducto 
+INNER JOIN precio t6 ON t5.idPrecio=t6.idPrecio
+INNER JOIN producto_almacen t7 ON t1.idProducto=t7.idProducto
+INNER JOIN almacen t8 ON t7.idAlmacen=t8.idAlmacen
+WHERE t5.estado='Activo' AND t6.estado='Activo'
+GROUP BY t1.idProducto ASC
+-----------------------------------------------------------------------------------------------------------------------
+--para x-fn
+ // if($oProducto != null)
+                    // {
+                    //     $idProducto = $oRN_Producto->idProducto->getValue();
+                    //     $nombre = $oRN_Producto->nombre->getValue();
+                    //     $descripcion = $oRN_Producto->descripcion->getValue();
+                    //     $stock = $oRN_Producto->stock->getValue();
+
+                    //     $_SESSION["ProductoLista"] = array(
+                    //         "idProducto" => $idProducto,
+                    //         "nombre" => $nombre,
+                    //         "descripcion" => $descripcion,
+                    //         "stock" => $stock
+                    //     );
+                        
+                    // }
+                    // else
+                    // {
+                    //     $content = "err|No hay Productos Disponibles";
+                    // }
+--------------------------------------------------------------------------------------------------------
