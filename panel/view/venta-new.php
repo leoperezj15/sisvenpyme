@@ -50,9 +50,8 @@ else
     $tipoCliente = "";
 }
 //-------------------------------------------------------------------------------------------------------------------------------
-// incuimos el producto para abrir los productos
+// incuimos el RN_Producto para abrir los productos
 require_once "../model/RN_Producto.php";
-
 $oRN_Producto = new RN_Producto;
 
 $lista = $oRN_Producto->GetListProducto();
@@ -76,30 +75,48 @@ if($lista != null)
             "stock" => $stock
         );
         $mostrarProducto .="<option value=".$idProducto.">".$idProducto." ".$nombre." ".$descripcion."</option>";
-
-        
     }
     
 }
 $mostrarProducto .="";
 //----------------------------------------------------------------------------------------------------------------------
 //Validacion del detalle de venta
-$almacen = "";
-$producto = "";
-$cantidad = 0;
-$precio = 0;
-
+    $idProductoV = "";
+    $almacen = "";
+    $producto = "";
+    $cantidad = 0;
+    $precio = 0;
+    $subTotal = 0;
 if (isset($_SESSION["DetalleVenta"]))
 {
-    // $ClienteVenta = $_SESSION["ClienteVenta"];
-   
-    // $idCliente = $ClienteVenta["idCliente"];
-    // $nombreCompleto = $ClienteVenta["nombreCompleto"];
-    // $nroDocumento = $ClienteVenta["nroDocumento"];
-    // $direccion = $ClienteVenta["direccion"];
-    // $celular = $ClienteVenta["celular"];
-    // $tipoCliente = $ClienteVenta["tipocliente"];
-
+    $DetalleVenta = $_SESSION["DetalleVenta"];
+    $MostrarDetalleVenta = "";
+    $MostrarDetalleVenta = "<tr>";
+    foreach ($DetalleVenta as $item2)
+    {
+        
+        $idProductoV = $item2["idProducto"];
+        $almacen = $item2["almacen"];
+        $producto = " ".$item2["descripcion"]." ".$item2["nombre"]."";
+        $cantidad = $item2["cantidad"];
+        $precio = $item2["precio"];
+        $subTotal = $item2["cantidad"]*$item2["precio"];
+        $MostrarDetalleVenta .="
+            <td>".$almacen."</td>
+            <td>".$producto."</td>
+            <td>".$cantidad."</td>
+            <td>".$precio."</td>
+            <td>".$subTotal."</td>
+            
+        
+        ";
+        $MostrarDetalleVenta .= "</tr>";
+    }
+    
+}
+else
+{
+    $MostrarDetalleVenta ="No hay productos :(";
 }
 //----------------------------------------------------------------------------------------------------------------------
 require_once "../model/RN_Almacen.php";
@@ -125,7 +142,7 @@ if($listaAlmacen != null)
             "abrev" => $abrev,
             "Sucursal" => $Sucursal
         );
-        $mostrarAlmacen .="<option value=".$idAlmacen.">".$nombre." ".$abrev." Sucursal: ".$Sucursal."</option>";
+        $mostrarAlmacen .="<option value=".$nombre.">".$idAlmacen." ".$nombre." Sucursal: ".$Sucursal."</option>";
 
         
     }
@@ -155,19 +172,21 @@ $mostrarAlmacen .="";
         <hr class="my-2">
         <!-- Primer Row -->
         <div class="row">
-            <form action="control/c-venta.php" method="post" >
             <div class="input-group mb-2">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon3">Fecha y hora:</span>
                 </div>
                 <input type="text" class="form-control list-group-item list-group-item-secondary" id="basic-url" aria-describedby="basic-addon3" value="<?php echo $fechaTotalliteral;?>" disabled>
             </div>
-            <div class="col">
-                <input type="text"  name="nroDocumento" class="form-control form-control-sm" placeholder="Busque Ci o Nit" required><!--id="nroDocumento"-->
-            </div>
-            <div class="col">
-                <input type="submit" name="operacion" value="buscarCliente" class="btn btn-primary"><!--id="btnbuscarCliente" -->
-            </div>
+            <form action="control/c-venta.php" method="post" >
+                <div class="row">
+                    <div class="col">
+                        <input type="text"  name="nroDocumento" class="form-control form-control-sm" placeholder="Busque Ci o Nit" required><!--id="nroDocumento"-->
+                    </div>
+                    <div class="col">
+                        <input type="submit" name="operacion" value="buscarCliente" class="btn btn-primary"><!--id="btnbuscarCliente" -->
+                    </div>
+                </div>
             </form>
         </div>
         <!-- Finalizacion del primer Row -->
@@ -183,7 +202,7 @@ $mostrarAlmacen .="";
                                 <th scope="col">Direccion</th>
                                 <th scope="col">Celular </th>
                                 <th scope="col">Tipo de Cliente</th>
-                                <th scope="col">Operacion</th>
+                                <!-- <th scope="col">Operacion</th> -->
                             </tr>
                         </thead>
                         <tbody>
@@ -194,7 +213,7 @@ $mostrarAlmacen .="";
                                 <td><?php echo $direccion; ?></th>
                                 <td><?php echo $celular; ?></th>
                                 <td><?php echo $tipoCliente; ?></th>
-                                <td><a href="#" class="btn btn-danger">Quitar</a></th>
+                                <!-- <td><a href="#" class="btn btn-danger">Quitar</a></th> -->
                             </tr>
                         </tbody>
                     </table>
@@ -205,7 +224,7 @@ $mostrarAlmacen .="";
         <form action="control/c-venta.php" method="post">
         <div class="row">
             <div class="col">
-                <select name="idAlmacen" id="" class="form-control form-control-sm">
+                <select name="NombreAlmacen" id="" class="form-control form-control-sm">
                     <?php echo $mostrarAlmacen;?>
                 </select>
             </div>
@@ -242,14 +261,7 @@ $mostrarAlmacen .="";
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <?php echo "Aqui van los datos del detalle";?>
-                                    <td><?php echo $almacen; ?></td>
-                                    <td><?php echo $producto; ?></td>
-                                    <td><?php echo $cantidad; ?></td>
-                                    <td><?php echo $precio; ?></td>
-                                    <td><?php echo $precio * $cantidad; ?></td>
-                                </tr>
+                                <?php echo $MostrarDetalleVenta;?>
                             </tbody>
                         </table>
                         </div>
@@ -257,23 +269,25 @@ $mostrarAlmacen .="";
                 </div>
             </div>
             <div class="col-sm-3">
+            <form action="control/c-venta.php" method="post">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Botones de Acciones</h5>
                         <p class="card-text"></p>
                         <a href="#" class="btn btn-info">Verificar</a>
                         <hr class="my-2">
-                        <a href="#" class="btn btn-success">Contabilizar</a>
+                        <input type="submit" name="operacion" value="Contabilizar" class="btn btn-success">
                         <hr class="my-2">
-                        <a href="#" class="btn btn-danger">Cancelar</a>
+                        <input type="submit" name="operacion" value="Cancelar" class="btn btn-danger">
                     </div>
                 </div>
+            </form>
             </div>
         </div>
     </div>
 </div>
 <?php
 echo "<pre>";
-    print_r($_SESSION);
-    echo "</pre>";
+print_r($_SESSION);
+echo "</pre>";
 ?>
