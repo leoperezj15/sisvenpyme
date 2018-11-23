@@ -21,7 +21,7 @@ if ( !isset($_SESSION["ACL"]) )
     }
     $LitarEmpleados .="";
 ?>
-<div class="jumbotron">
+<!-- <div class="jumbotron"> -->
     <div class="container">
         <form action="" method="post"> <!-- Opcional para recivir foto se debe de agregar ectypy="multipart" -->
             <!-- (label{lbl$}+input[name="txt$" placeholder="" id="txt$" require]+br)*6   //ojo para crear label + input y br de forma mas rapida-->
@@ -130,4 +130,4 @@ if ( !isset($_SESSION["ACL"]) )
                 <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
             </div>
         </div>
-</div>
+<!-- </div> -->

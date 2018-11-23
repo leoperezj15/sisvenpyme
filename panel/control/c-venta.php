@@ -86,8 +86,15 @@ function buscarProducto()
       </div>";
     }
 }
+function Contabilizar()
+{
+    echo "<pre>";
+        print_r($_POST);
+        echo "</pre>";
+}
 function crearPedido()
 {
+
     // $oRN_Pedido = new RN_Pedido;
     // $osPedido = new Structure_Modulo;
 
@@ -100,18 +107,21 @@ function crearPedido()
 
     // $respuesta = $oRN_Pedido->SavePedido($osPedido);
 }
-function Contabilizar()
-{
-    echo "<pre>";
-        print_r($_POST);
-        echo "</pre>";
-}
+
 
 function Cancelar()
 {
     $_SESSION["ClienteVenta"] = null;
     $_SESSION["DetalleVenta"] = null;
     header("location:http://localhost:8081/acl/panel/index.php?mnu=c-venta-new");
+}
+function crearDetalleVenta()
+{
+
+}
+function actualizarPedido()
+{
+
 }
 
 ?>

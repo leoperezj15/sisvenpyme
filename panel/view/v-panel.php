@@ -155,4 +155,5 @@ $content .= "
     </form>
   </div>
 </nav>
+<div class="jumbotron">
 <!--Aqui termina el menu de navegacion-->

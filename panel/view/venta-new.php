@@ -143,8 +143,6 @@ if($listaAlmacen != null)
             "Sucursal" => $Sucursal
         );
         $mostrarAlmacen .="<option value=".$nombre.">".$idAlmacen." ".$nombre." Sucursal: ".$Sucursal."</option>";
-
-        
     }
     
 }
@@ -166,7 +164,7 @@ $mostrarAlmacen .="";
 //--------------mostar el cliente
 
 ?>
-<div class="jumbotron">
+<!-- <div class="jumbotron"> -->
     <div class="container">
         <h4>Venta de Productos</h4>
         <hr class="my-2">
@@ -285,7 +283,7 @@ $mostrarAlmacen .="";
             </div>
         </div>
     </div>
-</div>
+<!-- </div> -->
 <?php
 echo "<pre>";
 print_r($_SESSION);
