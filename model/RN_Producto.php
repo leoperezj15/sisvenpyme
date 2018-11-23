@@ -39,7 +39,7 @@ class RN_Producto extends DataBase
         t6.precioCompra AS t6_precioCompra,
         t6.precioVenta AS t6_precioVenta,
         t3.nombre AS t3_subCategoria,
-        t4.nombre as t4_categoria 
+        t4.nombre as t4_categoria
         FROM producto t1
         INNER JOIN unidadmedida t2 ON t1.idunidadMedida=t2.idunidadMedida
         INNER JOIN subcategoria t3 ON t1.idsubCategoria=t3.idsubCategoria

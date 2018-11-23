@@ -34,6 +34,11 @@ if ( isset($_POST["fn"]) )
                 
                 $idRol  = $oUsuario->idRol->getValue();
                 $rol    = $oUsuario->Rol->nombre->GetValue();
+                //incrementar usuario a la variable de session
+                $idUsuario = $oUsuario->idUsuario->GetValue();
+                $usuario = $oUsuario->username->GetValue();
+                $email = $oUsuario->email->GetValue();
+                //
                 
                 $oRN_RolModulo  = new RN_RolModulo;
                 $oRN_Objeto     = new RN_Objeto;
@@ -69,6 +74,12 @@ if ( isset($_POST["fn"]) )
                              "nombre" => $rol,
                              "listaModulos" => $iModulos);
                 $_SESSION["ACL"] = $acl;
+
+                $usuarioactivo = array(
+                    "idUsuario" => $idUsuario,
+                    "usuario" => $usuario,
+                    "email" => $email);
+                $_SESSION["USUARIO_ACTIVO"] = $usuarioactivo;
                 
                 $content = "ok|Datos Correctos";
             }
