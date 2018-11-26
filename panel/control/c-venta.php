@@ -15,10 +15,13 @@ switch($operacion)
     break;
     case 'Cancelar': CancelarVenta();
     break;
-    case 'Contabilizar': Contabilizar();
+    case 'Contabilizar': crearPedido();
+
     break;
 }
-
+        // echo "<pre>";
+        // print_r($_POST);
+        // echo "</pre>";
 
 function buscarCliente()
 {
@@ -93,7 +96,7 @@ function buscarProducto()
 }
 function Contabilizar()
 {
-    crearPedido();
+    
     // echo "<pre>";
     // print_r($_POST);
     // echo "</pre>";
@@ -102,6 +105,10 @@ function crearPedido()
 {
     //cargar datos para  nuevo pedido
     //idPedio, TotalPedido, estado, idtipoMovimiento, realizado_por, idCliente
+    $totalVenta = $_POST['totalVenta'];
+    // echo "<pre>";
+    // print_r($_POST);
+    // echo "</pre>";
     if (isset($_SESSION["ClienteVenta"])) 
     {
         $Cliente = $_SESSION["ClienteVenta"];
@@ -151,17 +158,17 @@ function crearPedido()
                     // print_r($osProductoAlmacen);
                     // echo "</pre>";
                     $resp = $oRN_ProductoAlmacen->SaveProductoAlmacen($osProductoAlmacen);
-                    
-                    if($resp != false)
-                    {
-                        $r = "inserto";
-                    }
-                    else
-                    {
-                        $r = "No se inserto";
-                    }
-
+                    //Actualizando el valor total del pedido
                 }
+                
+                $oRN_Pedido2 = new RN_Pedido;
+                $osPedido2 = new Structure_Pedido;
+                $osPedido2->idPedido->SetValue($idPedido);
+                $osPedido2->TotalPedido->SetValue($totalVenta);
+                $actualizarTotalPedido = $oRN_Pedido2->UpdatePedido($osPedido2);
+                // echo "<pre>";
+                //     print_r($osPedido2);
+                //     echo "</pre>";
             }
             
             

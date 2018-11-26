@@ -47,5 +47,13 @@ class RN_ProductoGeneral extends DataBase
         }
         return $osProductoGeneral;
     }
+    function GetProductoCompra()
+    {
+        
+    }
+    function GetProductoVenta()
+    {
+
+    }
 }                
 ?>

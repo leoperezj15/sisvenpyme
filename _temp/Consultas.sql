@@ -219,3 +219,58 @@ INNER JOIN sucursal t6 ON t5.idSucursal=t6.idSucursal
 INNER JOIN view_cliente_general t7 on t1.idCliente=t7.idCliente
 WHERE t1.idtipoMovimiento=3 --1 Ventas 3 Compras
 ORDER BY t3.idAlmacen,t3.idProducto
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+--Consulta de stock de Compra dependiendo del producto y del almacen
+SELECT t1.idPedido AS t1_idPedido,
+t2.nombre AS T2_nombre,
+t1.realizado_por AS t1_realizado_por,
+t3.idProductoAlmacen AS t3_idProductoAlmacen,
+t3.idProducto AS t3_idProducto,
+t4.nombre AS t4_nombre,
+t4.descripcion AS t4_descripcion,
+t3.fechaMovimiento As t3_fechaMovimiento,
+t3.idAlmacen as t3_idAlmacen,
+t5.nombre AS t5_nombre,
+t5.abrev as t5_abreviatura,
+t6.nombre as t6_nombreSucursal,
+t3.idPedido AS t3_idPedido,
+SUM(t3.cantidad) AS t3_cantidad,
+t7.*,
+t3.estado AS t3_estado
+FROM pedido t1
+INNER JOIN tipopedido t2 ON t1.idTipoMovimiento=t2.idTipoPedido
+INNER JOIN producto_almacen t3 ON t3.idPedido=t1.idPedido
+INNER JOIN producto t4 ON t3.idProducto=t4.idProducto
+INNER JOIN almacen t5 ON t3.idAlmacen=t5.idAlmacen
+INNER JOIN sucursal t6 ON t5.idSucursal=t6.idSucursal
+INNER JOIN view_cliente_general t7 on t1.idCliente=t7.idCliente
+WHERE t1.idtipoMovimiento=3 AND t3.idProducto=2 AND t3.idAlmacen=2
+ORDER BY t3.idAlmacen,t3.idProducto
+----------------------------------------------------------------------------------------------------------------------------------------------
+--consulta de stck de venta en relacion con el producto y su respectivo almacen
+SELECT t1.idPedido AS t1_idPedido,
+t2.nombre AS T2_nombre,
+t1.realizado_por AS t1_realizado_por,
+t3.idProductoAlmacen AS t3_idProductoAlmacen,
+t3.idProducto AS t3_idProducto,
+t4.nombre AS t4_nombre,
+t4.descripcion AS t4_descripcion,
+t3.fechaMovimiento As t3_fechaMovimiento,
+t3.idAlmacen as t3_idAlmacen,
+t5.nombre AS t5_nombre,
+t5.abrev as t5_abreviatura,
+t6.nombre as t6_nombreSucursal,
+t3.idPedido AS t3_idPedido,
+SUM(t3.cantidad) AS t3_cantidad,
+t7.*,
+t3.estado AS t3_estado
+FROM pedido t1
+INNER JOIN tipopedido t2 ON t1.idTipoMovimiento=t2.idTipoPedido
+INNER JOIN producto_almacen t3 ON t3.idPedido=t1.idPedido
+INNER JOIN producto t4 ON t3.idProducto=t4.idProducto
+INNER JOIN almacen t5 ON t3.idAlmacen=t5.idAlmacen
+INNER JOIN sucursal t6 ON t5.idSucursal=t6.idSucursal
+INNER JOIN view_cliente_general t7 on t1.idCliente=t7.idCliente
+WHERE t1.idtipoMovimiento=1 AND t3.idProducto=2 AND t3.idAlmacen=2
+ORDER BY t3.idAlmacen,t3.idProducto
+---------------------------------------------------------------------------------------------------------------------------------------------------

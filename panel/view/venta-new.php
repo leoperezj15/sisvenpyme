@@ -92,6 +92,7 @@ if (isset($_SESSION["DetalleVenta"]))
     $DetalleVenta = $_SESSION["DetalleVenta"];
     $MostrarDetalleVenta = "";
     $MostrarDetalleVenta = "<tr>";
+    $total = 0;
     foreach ($DetalleVenta as $item2)
     {
         
@@ -109,7 +110,17 @@ if (isset($_SESSION["DetalleVenta"]))
             <td>".$subTotal."</td>
         ";
         $MostrarDetalleVenta .= "</tr>";
+        $total += $subTotal;
     }
+    
+    $MostrarDetalleVenta.="<tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><h4>Total</h4></td>
+                                <td><h4>BOB ".$total."</h4></td>
+    
+                           </tr>";
     
 }
 else
@@ -272,6 +283,7 @@ $mostrarAlmacen .="";
                         <p class="card-text"></p>
                         <a href="#" class="btn btn-info">Verificar</a>
                         <hr class="my-2">
+                        <input type="hidden" name="totalVenta" value="<?php echo $total;?>">
                         <input type="submit" name="operacion" value="Contabilizar" class="btn btn-success">
                         <hr class="my-2">
                         <input type="submit" name="operacion" value="Cancelar" class="btn btn-danger">

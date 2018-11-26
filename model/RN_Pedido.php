@@ -35,8 +35,15 @@ class RN_Pedido extends DataBase
         // return $r;
         return $id;
     }
-    
-    
+    function UpdatePedido($_osPedido2)
+    {
+        $sql = "Update pedido set 
+        TotalPedido =" . $_osPedido2->TotalPedido->GetValue() . "
+        where idPedido =" . $_osPedido2->idPedido->GetValue() . "";
+        $res = $this->Execute($sql);
+        return $res;
+
+    }
 }
                 
 ?>
