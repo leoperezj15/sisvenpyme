@@ -15,16 +15,17 @@ class RN_ProductoGeneral extends DataBase
     {
         $this->Open();
     }
-    function GetProductoForAlmacenAndCant($_idProducto,$_nombreAlmacen,$_cantidad)
+    function GetProductoForAlmacenAndCant($_idProducto,$_idAlmacen,$_cantidad)
     {
         $sql = "SELECT t1_idProducto as idProducto,
         t1_descripcion as descripcion,
         t1_nombre as nombre,
+        t8_idAlmacen as idAlmacen,
         t8_almacen as almacen,
         t6_precioVenta as precioVenta
         FROM `view_producto_general` 
         WHERE t1_idProducto=".$_idProducto." 
-        AND t8_almacen='".$_nombreAlmacen."' 
+        AND t8_idAlmacen='".$_idAlmacen."' 
         AND t1_stock>=".$_cantidad."";
 
         $res = $this->Execute($sql);
@@ -39,7 +40,7 @@ class RN_ProductoGeneral extends DataBase
                 $osProductoGeneral->idProducto->SetValue($item['idProducto']);
                 $osProductoGeneral->descripcion->SetValue($item['descripcion']);
                 $osProductoGeneral->nombre->SetValue($item['nombre']);
-                $osProductoGeneral->almacen->SetValue($item['almacen']);
+                $osProductoGeneral->idAlmacen->SetValue($item['idAlmacen']);
                 $osProductoGeneral->precioVenta->SetValue($item['precioVenta']);
 
             }

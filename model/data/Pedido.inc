@@ -1,7 +1,7 @@
 <?php
 
 require_once "field.inc";
-require_once "Pedido.inc";
+require_once "Cliente.inc";
 require_once "Empleado.inc";
 
 class Structure_Pedido
@@ -25,8 +25,8 @@ class Structure_Pedido
         $this->realizado_por = new Field("int");
         $this->idCliente = new Field("int");
 
-        $this->Empleado = new Strcture_Empleado;
-        $this->Cliente = new Strcture_Cliente;
+        $this->Empleado = new Structure_Empleado;
+        $this->Cliente = new Structure_Cliente;
         
     }
 }

@@ -4,13 +4,9 @@
 **
 */
 
-//require_once("../model/RN_Empleado.php");
 
-//$oRN_Empleado = new RN_Empleado;
 
-//$listarEmpleados = $oRN_Empleado->GetListEmpleado();
 
-//include_once "view/v-panel.php";
 include_once "view/v-panel.php";
 include_once "view/producto-list.php";
 include_once "view/v-footer.php";

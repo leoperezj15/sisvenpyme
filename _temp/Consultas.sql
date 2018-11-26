@@ -168,4 +168,34 @@ WHERE
     t5.estado = 'Activo' AND t6.estado = 'Activo'
 GROUP BY
     t1.idProducto ASC
---------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+-- busqueda de Productos mientras el pedido sea uno y almacen sea el adecuado
+SELECT t1.idProducto,t2.nombre AS NombreProducto, SUM(t1.cantidad) AS Stock 
+FROM producto_almacen t1
+INNER JOIN producto t2 ON t1.idProducto=t2.idProducto
+WHERE t1.idPedido=1 AND t1.idProducto=2 AND t1.idAlmacen=4
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+select `t1`.`idProducto` AS `t1_idProducto`,
+`t1`.`descripcion` AS `t1_descripcion`,
+`t1`.`nombre` AS `t1_nombre`,
+`t2`.`abrev` AS `t2_unidadMedida`,
+`t1`.`stock` AS `t1_stock`,
+`t6`.`precioCompra` AS `t6_precioCompra`,
+`t6`.`precioVenta` AS `t6_precioVenta`,
+`t3`.`nombre` AS `t3_subCategoria`,
+`t4`.`nombre` AS `t4_categoria`,
+`t8`.`idAlmacen` AS `t8_idAlmacen`,
+`t8`.`nombre` AS `t8_almacen`,
+`t8`.`abrev` AS `t8_abrev`,
+`t9`.`nombre` AS `t9_sucursal` 
+from (
+    (((((((`acl`.`producto` `t1` 
+    join `acl`.`unidadmedida` `t2` on ((`t1`.`idunidadMedida` = `t2`.`idunidadMedida`))) 
+    join `acl`.`subcategoria` `t3` on ((`t1`.`idsubCategoria` = `t3`.`idsubCategoria`))) 
+    join `acl`.`categoria` `t4` on ((`t3`.`idCategoria` = `t4`.`idCategoria`))) 
+    join `acl`.`producto_precio` `t5` on ((`t1`.`idProducto` = `t5`.`idProducto`))) 
+    join `acl`.`precio` `t6` on ((`t5`.`idPrecio` = `t6`.`idPrecio`))) 
+    join `acl`.`producto_almacen` `t7` on ((`t1`.`idProducto` = `t7`.`idProducto`))) 
+    join `acl`.`almacen` `t8` on ((`t7`.`idAlmacen` = `t8`.`idAlmacen`))) 
+    join `acl`.`sucursal` `t9` on ((`t8`.`idSucursal` = `t9`.`idSucursal`))) 
+    where ((`t5`.`estado` = 'Activo') and (`t6`.`estado` = 'Activo'))

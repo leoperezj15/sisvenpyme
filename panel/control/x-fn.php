@@ -12,6 +12,7 @@ require_once "../../model/RN_RolModulo.php";
 require_once "../../model/RN_Objeto.php";
 require_once "../../model/RN_Empleado.php";
 require_once "../../model/RN_Cliente.php";
+require_once "../../model/RN_SubCategoria.php";
 
 $content = "";
 
@@ -154,6 +155,25 @@ if ( isset($_POST["fn"]) )
                     $content = "err|No se encontro ningun cliente";
                 }
                 
+                break;
+        case "GetListSubCategoria":
+                $idCategoria = $_POST["idCategoria"];
+                $oRN_SubCategoria = new RN_SubCategoria;
+                $listarSubCategorias = $oRN_SubCategoria->GetListSubCategoriaByCategoria($idCategoria);
+
+                $cboSubCategoria = "
+                <label for=''>Selecione SubCategoria</label>
+                <select id='comboSubCategoria'>
+                
+                ";
+                foreach ($listarSubCategorias as $item2)
+                {
+                    $cboSubCategoria.= "<option value='".$item2->idsubCategoria->GetValue()."'>" . $item2->nombre->GetValue() . "</option>";
+                }
+                $cboSubCategoria.= "</select>";
+
+                $content = $cboSubCategoria;
+    
                 break;
     }
 }

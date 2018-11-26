@@ -59,6 +59,7 @@ $content .= "
     <link rel="icon" href="view/icon/favicon.ico">
     <!-- <link rel='stylesheet' type='text/css' href='view/css/main.css' /> -->
     <script src="view/plugin/jquery-2.0.3.min.js"></script>
+    <script src="view/plugin/subcategoriaBycategoria.js"></script>
     <!-- Bootstrap on line -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>

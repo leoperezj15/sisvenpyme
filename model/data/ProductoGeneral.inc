@@ -20,6 +20,7 @@
  	public $precioVenta;
  	public $subCategoria;
 	public $categoria;
+	public $idAlmacen;
  	public $almacen;
  	public $abrevAlmacen;
  	public $sucursal;
@@ -36,6 +37,7 @@
  		$this->precioVenta = new Field("float");
  		$this->subCategoria = new Field("varchar");
 		$this->categoria = new Field("varchar");
+		$this->idAlmacen = new Field("int");
  		$this->almacen = new Field("varchar");
  		$this->abrevAlmacen = new Field("varchar");
  		$this->sucursal = new Field("varchar");

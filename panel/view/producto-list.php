@@ -1,4 +1,48 @@
 
+    <?php
+    require_once("../model/RN_Categoria.php");
+    require_once("../model/RN_SubCategoria.php");
+    require_once("../model/RN_UnidadMedida.php");
+    
+    $oRN_Categoria = new RN_Categoria;
+    $oRN_SubCategoria = new RN_SubCategoria;
+    $oRN_UnidadMedida = new RN_UnidadMedida;
+    
+    $listarCategorias = $oRN_Categoria->GetListCategoria();
+    // Un select de Categoria
+    $cboCategoria = "<select id='comboCategoria' onchange='GetListSubCategoria(this)'>";
+    foreach ($listarCategorias as $item) 
+    {
+        if($idCategoria == "")
+        {
+            $idCategoria = $item->idCategoria->GetValue();
+        }
+        $cboCategoria.= "<option value='".$item->idCategoria->GetValue()."'>" . $item->nombre->GetValue() . "</option>";
+    }
+    $cboCategoria.= "</select>";
+    //Select de Sub Categoria
+    $listarSubCategorias = $oRN_SubCategoria->GetListSubCategoriaByCategoria($idCategoria);
+
+    $cboSubCategoria = "<select id='comboSubCategoria'>";
+    foreach ($listarSubCategorias as $item2)
+    {
+        $cboSubCategoria.= "<option value='".$item2->idsubCategoria->GetValue()."'>" . $item2->nombre->GetValue() . "</option>";
+    }
+    $cboSubCategoria.= "</select>";
+
+    //Select de Unidad de Medida
+
+    $listarUnidadMedida = $oRN_UnidadMedida->GetListUnidadMedida();
+    $cboUnidadMedida = "<select id='comboUnidadMedida'>";
+    foreach($listarUnidadMedida as $item3)
+    {
+        $cboUnidadMedida .= "<option value='".$item3->idunidadMedida->GetValue()."'>".$item3->nombre->GetValue()." - " . $item3->abrev->GetValue() . "</option>";
+    }
+    $cboUnidadMedida .= "</select>";
+
+    
+    
+    ?>
     <div class="container">
         <form action="" method="post"> <!-- Opcional para recivir foto se debe de agregar ectypy="multipart" -->
             <!-- (label{lbl$}+input[name="txt$" placeholder="" id="txt$" require]+br)*6   //ojo para crear label + input y br de forma mas rapida-->
@@ -35,20 +79,52 @@
                             
 
                             <div class="form-group col-md-6">
-                            <label for="">Peso</label>
+                            <label for="">Modelo</label>
                             <input type="text" class="form-control" name="apMaterno" placeholder="" id="apMaterno" require="" required>
                             </div>
                             
 
                             <div class="form-group col-md-6">
-                            <label for="">Elaboracion</label>
-                            <input type="date" class="form-control" name="fechaNacimiento" placeholder="" id="FechaNacimiento" require="" required>
+                            <label for="">Peso</label>
+                            <input type="number" class="form-control" name="fechaNacimiento" placeholder="" id="FechaNacimiento" require="" required>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                            <label for="">Precio de Compra</label>
+                            <input type="number" class="form-control" name="fechaNacimiento" placeholder="" id="FechaNacimiento" require="" required>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                            <label for="">Precio de Venta</label>
+                            <input type="number" class="form-control" name="fechaNacimiento" placeholder="" id="FechaNacimiento" require="" required>
                             </div>
                             
 
-                            <div class="form-group col-md-4">
-                            <label for="">Cedula de Identidad</label>
-                            <input type="text" class="form-control" name="ci" placeholder="" id="CI" require="" required>
+                            <div class="form-group col-md-6">
+                            <label for="">Origen de Producto</label>
+                            <select name="madein" id="madein">
+                                <option value="USA">USA</option>
+                                <option value="Brasil">Brasil</option>
+                                <option value="China">China</option>
+                                <option value="Vietnan">Vietnan</option>
+                                <option value="Korea del Sur">Korea del Sur</option>
+                                <option value="Japon">Japon</option>
+                            </select>
+                            </div>
+
+                            <div class="form-group col-md-8">
+                            <label for="">Seleccione Categoria</label>
+                            <?php echo $cboCategoria;?>
+                            </div>
+
+                            <div class="form-group col-md-8" id="ctn-SubCategoria">
+                            <label for="">Selecione SubCategoria</label>
+                            <?php echo $cboSubCategoria;?>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                            <label for="">Selecione Unidad de Medida</label>
+                            <?php echo $cboUnidadMedida; ?>
                             </div>
                             
                         </div>

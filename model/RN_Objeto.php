@@ -2,7 +2,6 @@
                 
 /**
  * @author		Leonardo Perez Justiniano
- * @company 	Blaufuß
  * @copyright 	2018
  * @version     1.0
  */
@@ -19,7 +18,7 @@ class RN_Objeto extends DataBase
     }
     
     /** 
-     * @abstract Función para obtener la lista de objeto(s) 
+     * @abstract Funciï¿½n para obtener la lista de objeto(s) 
      * @return Lista de Structure_Objeto
      */
     function GetList()
@@ -77,7 +76,7 @@ class RN_Objeto extends DataBase
     }
     
     /** 
-     * @abstract Función para obtener la lista de objeto(s)
+     * @abstract Funciï¿½n para obtener la lista de objeto(s)
      * @param int idModulo
      * @return Lista de Structure_Objeto
      */
@@ -136,7 +135,7 @@ class RN_Objeto extends DataBase
     }
     
     /** 
-     * @abstract Función para obtener los Datos de objeto(s)
+     * @abstract Funciï¿½n para obtener los Datos de objeto(s)
      * @param string hash
      * @return Structure_Objeto
      */
@@ -193,7 +192,7 @@ class RN_Objeto extends DataBase
     }
     
     /** 
-     * @abstract Función para guardar objeto
+     * @abstract Funciï¿½n para guardar objeto
      * @param Structure_Objeto osObjeto
      * @return bool
      */
@@ -221,7 +220,7 @@ class RN_Objeto extends DataBase
     }
     
     /** 
-     * @abstract Función para actualizar objeto
+     * @abstract Funciï¿½n para actualizar objeto
      * @param Structure_Objeto osObjeto
      * @return bool
      */
@@ -241,7 +240,7 @@ class RN_Objeto extends DataBase
     }
     
     /** 
-     * @abstract Función para eliminar objeto
+     * @abstract Funciï¿½n para eliminar objeto
      * @param string hash
      * @return bool
      */

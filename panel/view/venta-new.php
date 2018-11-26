@@ -96,19 +96,17 @@ if (isset($_SESSION["DetalleVenta"]))
     {
         
         $idProductoV = $item2["idProducto"];
-        $almacen = $item2["almacen"];
+        $idAlmacen = $item2["idAlmacen"];
         $producto = " ".$item2["descripcion"]." ".$item2["nombre"]."";
         $cantidad = $item2["cantidad"];
         $precio = $item2["precio"];
         $subTotal = $item2["cantidad"]*$item2["precio"];
         $MostrarDetalleVenta .="
-            <td>".$almacen."</td>
+            <td>".$idAlmacen."</td>
             <td>".$producto."</td>
             <td>".$cantidad."</td>
             <td>".$precio."</td>
             <td>".$subTotal."</td>
-            
-        
         ";
         $MostrarDetalleVenta .= "</tr>";
     }
@@ -142,7 +140,7 @@ if($listaAlmacen != null)
             "abrev" => $abrev,
             "Sucursal" => $Sucursal
         );
-        $mostrarAlmacen .="<option value=".$nombre.">".$idAlmacen." ".$nombre." Sucursal: ".$Sucursal."</option>";
+        $mostrarAlmacen .="<option value=".$idAlmacen.">".$idAlmacen." ".$nombre." Sucursal: ".$Sucursal."</option>";
     }
     
 }
@@ -222,7 +220,7 @@ $mostrarAlmacen .="";
         <form action="control/c-venta.php" method="post">
         <div class="row">
             <div class="col">
-                <select name="NombreAlmacen" id="" class="form-control form-control-sm">
+                <select name="idAlmacen" id="" class="form-control form-control-sm">
                     <?php echo $mostrarAlmacen;?>
                 </select>
             </div>

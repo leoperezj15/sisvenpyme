@@ -7,6 +7,7 @@
 
 class Structure_ProductoAlmacen
 {
+    public $idProductoAlmacen;
     public $idProducto;
     public $idAlmacen;
     public $cantidad;
@@ -21,7 +22,8 @@ class Structure_ProductoAlmacen
     function __construct()
     
     {
-        $this->idProducto = new Field("int", true);
+        $this->idProductoAlmacen = new Field("int", true);
+        $this->idProducto = new Field("int");
  		$this->idAlmacen = new Field("int");
  		$this->cantidad = new Field("float");
  		$this->idPedido = new Field("int");
