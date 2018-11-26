@@ -60,6 +60,7 @@ $content .= "
     <!-- <link rel='stylesheet' type='text/css' href='view/css/main.css' /> -->
     <script src="view/plugin/jquery-2.0.3.min.js"></script>
     <script src="view/plugin/subcategoriaBycategoria.js"></script>
+    <script src="view/plugin/fechayhora.js"></script>
     <!-- Bootstrap on line -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
@@ -158,3 +159,23 @@ $content .= "
 </nav>
 <div class="jumbotron">
 <!--Aqui termina el menu de navegacion-->
+<!-- <div class="widget">
+    <div class="fecha">
+      <p id="diaSemana" class="diaSemana"></p>
+      <p id="dia" class="dia"></p>
+      <p>de</p>
+      <p id="mes" class="mes"></p>
+      <p>del</p>
+      <p id="anio" class="anio"></p>
+    </div>
+    <div class="reloj">
+      <p id="horas" class="horas"></p>
+      <p>:</p>
+      <p id="minutos" class="minutos"></p>
+      <p>:</p>
+      <div class="cajaSegundos">
+        <p id="ampm" class="ampm"></p>
+        <p id="segundos" class="segundos"></p>
+      </div>
+    </div>
+  </div> -->
