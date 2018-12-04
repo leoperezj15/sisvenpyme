@@ -47,6 +47,9 @@ if ( isset($_SESSION["ACL"]) )
 		case "c-venta-list":
 			include_once "control/c-venta-list.php";
 			break;
+		case "c-cliente-list":
+			include_once "control/c-cliente-list.php";
+			break;
 		default:
 			echo $mnu;
 			break;

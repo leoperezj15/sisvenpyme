@@ -45,7 +45,7 @@ function buscarCliente()
             "celular" => $celular,
             "tipocliente" => $tipoCliente
         );
-        header("location:http://localhost:8081/acl/panel/index.php?mnu=c-venta-new");
+        header("location:http://localhost:8081/acl/panel/?mnu=c-venta-new");
     }
     else
     {
