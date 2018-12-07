@@ -20,7 +20,7 @@ class Structure_Cliente
  
     function __construct()
     { 
- 		$this->idEmpleado = new Field("int", true);
+ 		$this->idCliente = new Field("int", true);
  		$this->direccion = new Field("varchar");
  		$this->telefonoFijo = new Field("varchar");
  		$this->telefonoCelular = new Field("varchar");

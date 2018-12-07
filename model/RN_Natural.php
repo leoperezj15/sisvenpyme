@@ -19,7 +19,7 @@ class RN_Natural extends DataBase
     
     function SaveNatural($_osNatural)
     {
-        $sql = "Insert into natural values (
+        $sql = "Insert into `natural` values (
 				" . $_osNatural->idCliente->GetValue() . ",
 				'" . $_osNatural->nombre->GetValue() . "',
                 '" . $_osNatural->apPaterno->GetValue() . "',
@@ -27,36 +27,37 @@ class RN_Natural extends DataBase
                 '" . $_osNatural->fechanacimiento->GetValue() . "',
                 '" . $_osNatural->ci->GetValue() . "',
                 '" . $_osNatural->genero->GetValue() . "')";
-
         $res = $this->Execute($sql);
-
-		$r = $res ? true : false;
-		return $r;
+        if($res == true)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
     function VerificarCI($_ci)
     {
-        $sql = "select * from natural where ci=".$_ci."";
+        $sql = "select * from `natural` where ci=".$_ci."";
         $res = $this->Execute($sql);
-        if ($this->ContainsData($res)){
-            $data = $this->DataListStructure($res);            
-            
-            foreach($data as $item)
-            {
-                $osNatural = new Structure_Natural;
+        $osNatural = null;
 
-                $osNatural->idCliente->SetValue($item['idCliente']);
-                $osNatural->nombre->SetValue($item['nombre']);
-                $osNatural->apPaterno->SetValue($item['apPaterno']);
-                $osNatural->apMaterno->SetValue($item['apMaterno']);
-                $osNatural->fechanacimiento->SetValue($item['fechanacimiento']);
-                $osNatural->ci->SetValue($item['ci']);
-                $osNatural->genero->SetValue($item['genero']);
- 				
-            }            
+        if ($this->ContainsData($res)){
+
+            $row = $this->FetchArray($res);      
+            $osNatural = $row;
+            //return $osNatural;
+            return true;
+        }
+        else
+        {
+            //return $osNatural;
+            return false;
         }
         
-        return $osNatural;
     }
+    
 }
 
 
