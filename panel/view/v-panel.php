@@ -64,11 +64,15 @@ $content .= "
     <!-- Bootstrap on line -->
     <link rel="stylesheet" href="view/css/bootstrap.min.css">
     <link rel="stylesheet" href="view/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="view/css/dataTables.bootstrap4.min.css">
+
+
     <script src="view/plugin/jquery-2.0.3.min.js"></script>
     <script src="view/js/jquery-3.3.1.slim.min.js"></script>
     <script src="view/js/popper.min.js"></script>
     <script src="view/js/bootstrap.min.js"></script>
     <script src="view/js/jquery.dataTables.min.js"></script>
+    <script src="view/js/dataTables.bootstrap4.min.js"></script>
     
     <script>
         $(document).ready(function()
@@ -137,7 +141,15 @@ $content .= "
         
         $(document).ready( function () 
         {
-            $('#TabladeClientes').DataTable();
+            $('#TabladeClientes').DataTable({
+                "language": {
+                    "lengthMenu": "Mostrar _MENU_ registros por página",
+                    "zeroRecords": "Nada encontrado - lo siento",
+                    "info": "Mostrando página _PAGE_ de _PAGES_",
+                    "infoEmpty": "No hay registros disponibles",
+                    "infoFiltered": "(filtrado de _MAX_ registros totales)"
+                }
+            } );
         } );
                         
     </script>  

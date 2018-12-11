@@ -15,8 +15,9 @@ switch($operacion)
     break;
     case 'GuardarJuridico': crearClienteJuridico();
     break;
-    case '': crearPedido();
-
+    case 'editarCliente': traerCliente();
+    break;
+    case 'eliminarCliente': echo "Eliminar Cliente";
     break;
 }
 echo "<pre>";
@@ -140,5 +141,52 @@ function crearClienteJuridico()
         header("location:../index.php?mnu=c-cliente-list#v-pills-profile");
     }
 
+}
+function traerCliente()
+{
+    $tipoCliente = $_POST["tipoCliente"];
+    $idCliente = $_POST["idCliente"];
+
+    if($tipoCliente == "Natural")
+    {
+        $oRN_Natural = new RN_Natural;
+    
+        $Natural = $oRN_Natural->VerificarNatural($idCliente);
+        
+        if($Natural != null)
+        {
+            $idCliente = $Natural->idCliente->GetValue();
+            $nombre = $Natural->nombre->GetValue();
+            $apPaterno = $Natural->apPaterno->GetValue();
+            $apMaterno = $Natural->apMaterno->GetValue();
+            $fechanacimiento = $Natural->fechanacimiento->GetValue();
+            $ci = $Natural->ci->GetValue();
+            $direccion = $Natural->Cliente->direccion->GetValue();
+            $telefonoFijo = $Natural->Cliente->telefonoFijo->GetValue();
+            $telefonoCelular = $Natural->Cliente->telefonoCelular->GetValue();
+
+            $_SESSION["UpdateCliente"] = array(
+                "idCliente" => $idCliente,
+                "nombre" => $nombre,
+                "apPaterno" => $apPaterno,
+                "apMaterno" => $apMaterno,
+                "fechanacimiento" => $fechanacimiento,
+                "ci" => $ci,
+                "direccion" => $direccion,
+                "telefonoFijo" => $telefonoFijo,
+                "telefonoCelular" => $telefonoCelular,
+                "tipoCliente" => "Natural"    
+            );
+            echo "<pre>";
+            print_r($_SESSION["UpdateCliente"]);
+            echo "</pre>";
+            header("location:../index.php?mnu=c-cliente-list");
+        }
+        
+    }
+    else
+    {
+
+    }
 }
 ?>

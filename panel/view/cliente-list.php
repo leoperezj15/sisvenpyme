@@ -4,19 +4,43 @@ if ( !isset($_SESSION["ACL"]) )
 {
     header("location: index.php");
 }
+// Listar El cliente
+$tipoClienteN = "";
+
+if(isset($_SESSION["UpdateCliente"]))
+{
+    $tipoClienteN = $_SESSION["tipoCliente"];
+    if($tipoClienteN == "Natural")
+    {
+        $idClienteN = $_SESSION["tipoCliente"];
+        $nombreN = $_SESSION["nombre"];
+        $apPaternoN = $_SESSION["apPaterno"];
+        $apMaternoN = $_SESSION["apMaterno"];
+        $fechanacimientoN = $_SESSION["fechanacimiento"];
+        $ciN = $_SESSION["ci"];
+        $direccionN = $_SESSION["direccion"];
+        $telefonoFijoN = $_SESSION["telefonoFijo"];
+        $telefonoCelularN = $_SESSION["telefonoCelular"];
+    }
+
+}
+
+
 
 $ListarClientesGeneral = "";
 foreach ($listarClientes as $item) 
 {
     $ListarClientesGeneral .= "
         <tr>
-            <th scope='row'>" .$item->idCliente->GetValue(). "</td>
+            <form action='control/c-cliente.php' method='post'>
+            <th scope='row'><input type='hidden' name='idCliente' value='" .$item->idCliente->GetValue(). "'>" .$item->idCliente->GetValue(). "</td>
             <td>" .$item->nombreCompleto->GetValue(). "</td>
             <td>" .$item->nroDocumento->GetValue(). "</td>
             <td>" .$item->direccion->GetValue(). "</td>
             <td>" .$item->celular->GetValue(). "</td>
-            <td>" .$item->tipoCliente->GetValue(). "</td>
-            <td><div class='btn-group' role='group'><a class='btn btn-sm btn-outline-danger' href='#'>Editar</a><a class='btn btn-sm btn-outline-warning' href='#'>Eliminar</a></div></td>
+            <td><input type='hidden' name='tipoCliente' value='" .$item->tipoCliente->GetValue(). "'>" .$item->tipoCliente->GetValue(). "</td>
+            <td><div class='btn-group' role='group'><button class='btn btn-outline-danger btn-sm' type='submit' name='operacion' value='editarCliente'>Editar</button><button class='btn btn-sm btn-outline-warning' type='submit' name='operacion' value='eliminarCliente'>Eliminar</button></div></td>
+            </form>
         </tr>
     "; 
 }
@@ -40,25 +64,27 @@ $ListarClientesGeneral.="";
                 <div class="tab-pane fade show active table-responsive-sm" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                     <h3>Listado de Clientes</h3>
                     <div class="shadow-lg p-3 mb-5 bg-white rounded">
-                    <div class="table-responsive-md">
-                        <table id="TabladeClientes" class="table table-striped table-sm display">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Cod. Cliente</th>
-                                    <th scope="col">Nombre Completo</th>
-                                    <th scope="col">Nro de Documento</th>
-                                    <th scope="col">Direccion</th>
-                                    <th scope="col">Celular o Telefono</th>
-                                    <th scope="col">Tipo de Cliente</th>
-                                    <th scope="col">Operacion</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                    echo $ListarClientesGeneral;
-                                ?>
-                            </tbody>
-                        </table>
+                    <div class="table-responsive-sm table-responsive-md">
+                        
+                            <table id="TabladeClientes" class="table-sm table-striped-md table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Cod. Cliente</th>
+                                        <th scope="col">Nombre Completo</th>
+                                        <th scope="col">Nro de Documento</th>
+                                        <th scope="col">Direccion</th>
+                                        <th scope="col">Celular o Telefono</th>
+                                        <th scope="col">Tipo de Cliente</th>
+                                        <th scope="col">Operacion</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                        echo $ListarClientesGeneral;
+                                    ?>
+                                </tbody>
+                            </table>
+                            
                         <script type="text/javascript">
                         $(document).ready( function () 
                         {
