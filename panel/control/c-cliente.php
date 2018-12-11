@@ -177,9 +177,7 @@ function traerCliente()
                 "telefonoCelular" => $telefonoCelular,
                 "tipoCliente" => "Natural"    
             );
-            echo "<pre>";
-            print_r($_SESSION["UpdateCliente"]);
-            echo "</pre>";
+            
             header("location:../index.php?mnu=c-cliente-list");
         }
         
