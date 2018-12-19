@@ -49,7 +49,7 @@ $content .= "
 </li>
 ";
 ?>
-<html lang="es">
+<html lang="en">
 <head>
 	<meta http-equiv="content-type" content="text/html" charset="utf-8" />
 	<meta name="author" content="Leonardo Perez" />
@@ -57,22 +57,16 @@ $content .= "
 
 	<title>ACL - Panel</title>
     <link rel="icon" href="view/icon/favicon.ico">
-    <!-- <link rel='stylesheet' type='text/css' href='view/css/main.css' /> -->
-    <!-- <script src="view/plugin/jquery-2.0.3.min.js"></script>
+    <!-- <link rel='stylesheet' type='text/css' href='view/css/main.css'/>-->
+    <script src="view/plugin/jquery-2.0.3.min.js"></script>
     <script src="view/plugin/subcategoriaBycategoria.js"></script>
-    <script src="view/plugin/fechayhora.js"></script> -->
+    <script src="view/plugin/fechayhora.js"></script>
     <!-- Bootstrap on line -->
     <link rel="stylesheet" href="view/css/bootstrap.min.css">
     <link rel="stylesheet" href="view/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="view/css/dataTables.bootstrap4.min.css">
-
-
-    <script src="view/plugin/jquery-2.0.3.min.js"></script>
-    <script src="view/js/jquery-3.3.1.slim.min.js"></script>
-    <script src="view/js/popper.min.js"></script>
-    <script src="view/js/bootstrap.min.js"></script>
-    <script src="view/js/jquery.dataTables.min.js"></script>
-    <script src="view/js/dataTables.bootstrap4.min.js"></script>
+    <!-- <script src="view/js/jquery-3.3.1.slim.min.js"></script>-->
+    <!--<script src="view/plugin/jquery-2.0.3.min.js"></script>-->
     
     <script>
         $(document).ready(function()
@@ -132,6 +126,56 @@ $content .= "
             			
             		}
             	});
+            })
+            $(".btnEditar").click(function(){
+                idCliente = $(this).attr("data-cliente");
+                tipo      = $(this).attr("data-tipocliente");
+
+                $.ajax({
+                    type: "POST",
+                    url : "control/c-cliente.php",
+                    data: "operacion=editarCliente&idCliente="+ idCliente + "&tipoCliente=" + tipo,
+                    success: function(res){
+                        //alert(res);
+                        data = res.split("|");
+                        
+                            $('#validationCustom00').val(data[1]);
+                            $('#validationCustom01').val(data[2]);
+                            $('#validationCustom02').val(data[3]);
+                            $('#validationCustom03').val(data[4]);
+                            $('#validationCustom04').val(data[5]);
+                            $('#validationCustom05').val(data[6]);
+                            $('#validationCustom06').val(data[7]);
+                            $('#validationCustom07').val(data[8]);
+                            $('#validationCustom08').val(data[9]);
+                        if (data[0] == "Natural") {
+                            $('#validationCustom00').val(data[1]);
+                            $('#validationCustom01').val(data[2]);
+                            $('#validationCustom02').val(data[3]);
+                            $('#validationCustom03').val(data[4]);
+                            $('#validationCustom04').val(data[5]);
+                            $('#validationCustom05').val(data[6]);
+                            $('#validationCustom06').val(data[7]);
+                            $('#validationCustom07').val(data[8]);
+                            $('#validationCustom08').val(data[9]);
+                        }else{
+                            $('#JvalidationCustom00').val(data[1]);
+                            $('#JvalidationCustom01').val(data[2]);
+                            $('#JvalidationCustom02').val(data[3]);
+                            $('#JvalidationCustom03').val(data[4]);
+                            $('#JvalidationCustom04').val(data[5]);
+                            $('#JvalidationCustom05').val(data[6]);
+                            $('#JvalidationCustom06').val(data[7]);
+                        }
+                        
+                        
+
+                    }   
+                });
+                
+
+                
+
             })
         })
         function reloadPage()

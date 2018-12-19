@@ -162,13 +162,13 @@ if ( isset($_POST["fn"]) )
                 $listarSubCategorias = $oRN_SubCategoria->GetListSubCategoriaByCategoria($idCategoria);
 
                 $cboSubCategoria = "
-                <label for=''>Selecione SubCategoria</label>
-                <select id='comboSubCategoria'>
+                <label for='comboSubCategoria'>Selecione SubCategoria</label>
+                <select class='custom-select' id='comboSubCategoria'>
                 
                 ";
                 foreach ($listarSubCategorias as $item2)
                 {
-                    $cboSubCategoria.= "<option value='".$item2->idsubCategoria->GetValue()."'>" . $item2->nombre->GetValue() . "</option>";
+                    $cboSubCategoria.= "<option  value='".$item2->idsubCategoria->GetValue()."'>" . $item2->nombre->GetValue() . "</option>";
                 }
                 $cboSubCategoria.= "</select>";
 

@@ -84,6 +84,25 @@ class RN_Cliente extends DataBase
 		
 		return $id;
     }
+    function DeleteCliente($_idCliente)
+    {
+        $sql = "Update cliente set estado = 'Inactivo' where idCliente = '" . $_idCliente . "'";
+        $res = $this->Execute($sql);
+        
+        return $res;
+    }
+    function UpdateCliente($_osCliente)
+    {
+        $sql = "Update cliente set 
+					direccion = '" . $_osCliente->direccion->GetValue() . "',
+                    telefonoFijo = '" . $_osCliente->telefonoFijo->GetValue() . "',
+                    telefonoCelular = '" . $_osCliente->telefonoCelular->GetValue(). "',
+                    genero = '" . $_osCliente->genero->GetValue(). "'
+				where idCliente = '" . $_osCliente->idCliente->GetValue() . "'";
+        $res = $this->Execute($sql);
+        
+        return $res;
+    }
 }
                 
 ?>

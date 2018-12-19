@@ -10,7 +10,8 @@
     
     $listarCategorias = $oRN_Categoria->GetListCategoria();
     // Un select de Categoria
-    $cboCategoria = "<select id='comboCategoria' onchange='GetListSubCategoria(this)'>";
+    $idCategoria="";
+    $cboCategoria = "<select class='custom-select' id='comboCategoria' onchange='GetListSubCategoria(this)'>";
     foreach ($listarCategorias as $item) 
     {
         if($idCategoria == "")
@@ -23,7 +24,7 @@
     //Select de Sub Categoria
     $listarSubCategorias = $oRN_SubCategoria->GetListSubCategoriaByCategoria($idCategoria);
 
-    $cboSubCategoria = "<select id='comboSubCategoria'>";
+    $cboSubCategoria = "<select class='custom-select' id='comboSubCategoria'>";
     foreach ($listarSubCategorias as $item2)
     {
         $cboSubCategoria.= "<option value='".$item2->idsubCategoria->GetValue()."'>" . $item2->nombre->GetValue() . "</option>";
@@ -33,7 +34,7 @@
     //Select de Unidad de Medida
 
     $listarUnidadMedida = $oRN_UnidadMedida->GetListUnidadMedida();
-    $cboUnidadMedida = "<select id='comboUnidadMedida'>";
+    $cboUnidadMedida = "<select class='custom-select' id='comboUnidadMedida'>";
     foreach($listarUnidadMedida as $item3)
     {
         $cboUnidadMedida .= "<option value='".$item3->idunidadMedida->GetValue()."'>".$item3->nombre->GetValue()." - " . $item3->abrev->GetValue() . "</option>";
@@ -54,7 +55,7 @@
             </button>
             <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
+                <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Registro de Nuevo Producto</h5>
@@ -101,8 +102,8 @@
                             
 
                             <div class="form-group col-md-6">
-                            <label for="">Origen de Producto</label>
-                            <select name="madein" id="madein">
+                            <label for="madein">Origen de Producto</label>
+                            <select class="custom-select" name="madein" id="madein">
                                 <option value="USA">USA</option>
                                 <option value="Brasil">Brasil</option>
                                 <option value="China">China</option>
@@ -113,17 +114,17 @@
                             </div>
 
                             <div class="form-group col-md-8">
-                            <label for="">Seleccione Categoria</label>
+                            <label for="comboCategoria">Seleccione Categoria</label>
                             <?php echo $cboCategoria;?>
                             </div>
 
                             <div class="form-group col-md-8" id="ctn-SubCategoria">
-                            <label for="">Selecione SubCategoria</label>
+                            <label for="comboSubCategoria">Selecione una SubCategoria</label>
                             <?php echo $cboSubCategoria;?>
                             </div>
 
                             <div class="form-group col-md-6">
-                            <label for="">Selecione Unidad de Medida</label>
+                            <label for="comboUnidadMedida">Selecione Unidad de Medida</label>
                             <?php echo $cboUnidadMedida; ?>
                             </div>
                             

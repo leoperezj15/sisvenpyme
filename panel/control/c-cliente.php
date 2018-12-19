@@ -4,7 +4,9 @@ session_start();
 require_once "../../model/RN_Cliente.php";
 require_once "../../model/RN_Natural.php";
 require_once "../../model/RN_Juridico.php";
-
+echo "<pre>";
+print_r($_POST);
+echo "</pre>";
 
 $operacion = $_POST['operacion'];
 switch($operacion)
@@ -15,14 +17,16 @@ switch($operacion)
     break;
     case 'GuardarJuridico': crearClienteJuridico();
     break;
-    case 'editarCliente': traerCliente();
+    case 'editarCliente':  traerCliente();//echo "hey";
     break;
-    case 'eliminarCliente': echo "Eliminar Cliente";
+    case 'eliminarCliente': eliminarCliente();
+    break;
+    case 'actualizarNatural': //actualizarNatural();
+    break;
+    case 'actualizarJuridico': //actualizarJuridico();
     break;
 }
-echo "<pre>";
-print_r($_POST);
-echo "</pre>";
+
 function crearClienteNatural()
 {
 
@@ -178,13 +182,84 @@ function traerCliente()
                 "tipoCliente" => "Natural"    
             );
             
-            header("location:../index.php?mnu=c-cliente-list");
+            echo "".$tipoCliente."|".$idCliente."|".$nombre."|".$apPaterno."|".$apMaterno."|".$fechanacimiento."|".$ci."|".$direccion."|".$telefonoFijo."|".$telefonoCelular."";
+            //header("location:../index.php?mnu=c-cliente-list");
         }
         
     }
     else
     {
+        $oRN_Juridico = new RN_Juridico;
 
+        $Juridico = $oRN_Juridico->VerificarJuridico($idCliente);
+
+        if($Juridico != null)
+        {
+            $idCliente = $Juridico->idCliente->GetValue();
+            $razonSocial = $Juridico->razonSocial->GetValue();
+            $rpteLegal = $Juridico->rpteLegal->GetValue();
+            $nit = $Juridico->nit->GetValue();
+            $direccion = $Juridico->Cliente->direccion->GetValue();
+            $telefonoFijo = $Juridico->Cliente->telefonoFijo->GetValue();
+            $telefonoCelular = $Juridico->Cliente->telefonoCelular->GetValue();
+
+            $_SESSION["UpdateCliente"] = array(
+                "idCliente" => $idCliente,
+                "razonSocial" => $razonSocial,
+                "rpteLegal" => $rpteLegal,
+                "nit" => $nit,
+                "direccion" => $direccion,
+                "telefonoFijo" => $telefonoFijo,
+                "telefonoCelular" => $telefonoCelular,
+                "tipoCliente" => "Juridico"
+            );
+            echo "".$tipoCliente."|".$idCliente."|".$razonSocial."|".$rpteLegal."|".$nit."|".$direccion."|".$telefonoFijo."|".$telefonoCelular."";
+            //header("location:../index.php?mnu=c-cliente-list");
+        }
     }
 }
+function eliminarCliente()
+{
+    echo "<pre>";
+    print_r($_POST);
+    echo "</pre>";
+    //estraer los datos
+    $idCliente = $_POST['idCliente'];
+    $tipoCliente = $_POST['tipoCliente'];
+
+    $oRN_Cliente = new RN_Cliente;
+
+    $resultado = $oRN_Cliente->DeleteCliente($idCliente);
+
+    if($resultado == true)
+    {
+        header("location:../index.php?mnu=c-cliente-list");
+    }
+    else
+    {
+        echo "no se cumplio";
+    }
+    
+    //preguntar que tipo de cliente es
+
+    //natural
+
+    //juridico
+}
+function actualizarNatural()
+{
+    
+}
+function actualizarJuridico()
+{
+    
+}
+
+
+
+
+
+
+
+
 ?>

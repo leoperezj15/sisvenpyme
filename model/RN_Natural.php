@@ -107,6 +107,19 @@ class RN_Natural extends DataBase
         return $osNatural;
 
     }
+    function UpdateNatural($_osNatural)
+    {
+        $sql = "Update `natural` set 
+					nombre = '" . $_osNatural->nombre->GetValue() . "',
+                    apPaterno = '" . $_osNatural->apPaterno->GetValue() . "',
+                    apMaterno = '" . $_osNatural->apMaterno->GetValue(). "',
+                    fechanacimiento = '" . $_osNatural->fechanacimiento->GetValue(). "',
+                    ci = '" . $_osNatural->ci->GetValue(). "'
+				where idCliente = '" . $_osNatural->idCliente->GetValue() . "'";
+        $res = $this->Execute($sql);
+        
+        return $res;
+    }
     
 }
 

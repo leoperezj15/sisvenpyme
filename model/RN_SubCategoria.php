@@ -62,10 +62,19 @@ class RN_SubCategoria extends DataBase
                 $osSubCategoria->idCategoria->SetValue($item["idCategoria"]);
 
  				$list[] = $osSubCategoria;                
-            }            
+            }
+            return $list;
+        }
+        else
+        {
+            $osSubCategoria = new Structure_SubCategoria;
+            $osSubCategoria->idsubCategoria->SetValue(0);
+            $osSubCategoria->nombre->SetValue("No contiene datos para la SubCategoria");
+            $list[] = $osSubCategoria;
+            return $list;
         }
         
-        return $list;
+        
     }
     
 }
