@@ -114,7 +114,8 @@ class RN_Natural extends DataBase
                     apPaterno = '" . $_osNatural->apPaterno->GetValue() . "',
                     apMaterno = '" . $_osNatural->apMaterno->GetValue(). "',
                     fechanacimiento = '" . $_osNatural->fechanacimiento->GetValue(). "',
-                    ci = '" . $_osNatural->ci->GetValue(). "'
+                    ci = '" . $_osNatural->ci->GetValue(). "',
+                    genero = '" . $_osNatural->genero->GetValue(). "'
 				where idCliente = '" . $_osNatural->idCliente->GetValue() . "'";
         $res = $this->Execute($sql);
         

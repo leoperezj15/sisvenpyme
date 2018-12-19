@@ -11,19 +11,19 @@
 ?>
 <html>
 <head>
-	<meta http-equiv="content-type" content="text/html" charset="utf-8" />
-	<meta name="author" content="Leonardo Perez Justiniano" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
 	<title>ACL - Login</title>
-    <link rel='stylesheet' type='text/css' href='view/css/main.css' />
+    <!-- <link rel='stylesheet' type='text/css' href='view/css/main.css' /> -->
     <!-- <link rel='stylesheet' type='text/css' href='view/css/floating-labels.css' /> -->
-    <script src="view/plugin/jquery-2.0.3.min.js"></script>
+    
     <link rel="icon" href="view/icon/favicon.ico">
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script> -->
+    <link rel="stylesheet" href="view/css/bootstrap.min.css">
+    <link rel="stylesheet" href="view/css/signin.css">
+    <script src="view/plugin/jquery-2.0.3.min.js"></script>
     
     <script>
         $(document).ready(function()
@@ -32,7 +32,7 @@
             {
                 
                 user = $("#user").val();
-                pass = $("#pass").val();
+                pass = $("#password").val();
                 
                 $.ajax({
             		type: "POST",
@@ -45,7 +45,7 @@
                         
             			if (data[0] == "ok")
             			{          
-                            alert(data[1]);
+                            //alert(data[1]);
                             setTimeout("reloadPage()", 1000);
             			}else{
                             alert(data[1]);
@@ -63,19 +63,20 @@
     </script>
 </head>
 
-<body>
+<body class="text-center">
 <!--Login antiguo-->
-<div class="form-signin"><!--ctn-main-->
-    <div class="text-center mb-4">
+<form class="form-signin"><!--ctn-main-->
         <!-- <img class="mb-4" src="view/img/bootstrap-solid.svg" alt="" width="72" height="72"> -->
-        <h1 class="h3 mb-3 font-weight-normal">Sistema de Gestion de Ventas Pyme</h1>
-    </div>
-    <div class="ctn-login"><!--ctn-login-->
-        <input type="text" id="user" placeholder="Ingrese su usuario" />
-        <input type="password" id="pass" placeholder="Ingrese su contraseña" />
-        <input type="button" id="btnSend" value="Ingresar" />
-    </div>
-</div>
+        <img class="mb-4" src="view/svg/bootstrap-solid.svg" alt="" width="72" height="72">
+        <h1 class="h3 mb-3 font-weight-normal">Sistema de Gestion para Compra y Venta en Pymes</h1>
+    <!-- <div class="ctn-login">ctn-login -->
+        <label for="user" class="sr-only">Ingrese su Usuario</label>
+        <input type="text" id="user" class="form-control" placeholder="Ingrese su usuario" required autofocus>
+        <label for="password" class="sr-only">Ingrese su password</label>
+        <input type="password" id="password" class="form-control" placeholder="Ingrese su password" required>
+        <input type="button" class="btn btn-lg btn-primary btn-block" id="btnSend" value="Ingresar" />
+        <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+</form>
 <!--login-->
 <!-- <div class="form-signin">
     <div class="text-center mb-4">

@@ -96,8 +96,7 @@ class RN_Cliente extends DataBase
         $sql = "Update cliente set 
 					direccion = '" . $_osCliente->direccion->GetValue() . "',
                     telefonoFijo = '" . $_osCliente->telefonoFijo->GetValue() . "',
-                    telefonoCelular = '" . $_osCliente->telefonoCelular->GetValue(). "',
-                    genero = '" . $_osCliente->genero->GetValue(). "'
+                    telefonoCelular = '" . $_osCliente->telefonoCelular->GetValue(). "'
 				where idCliente = '" . $_osCliente->idCliente->GetValue() . "'";
         $res = $this->Execute($sql);
         

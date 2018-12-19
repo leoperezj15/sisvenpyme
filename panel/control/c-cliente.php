@@ -4,9 +4,9 @@ session_start();
 require_once "../../model/RN_Cliente.php";
 require_once "../../model/RN_Natural.php";
 require_once "../../model/RN_Juridico.php";
-echo "<pre>";
-print_r($_POST);
-echo "</pre>";
+// echo "<pre>";
+// print_r($_POST);
+// echo "</pre>";
 
 $operacion = $_POST['operacion'];
 switch($operacion)
@@ -21,7 +21,7 @@ switch($operacion)
     break;
     case 'eliminarCliente': eliminarCliente();
     break;
-    case 'actualizarNatural': //actualizarNatural();
+    case 'actualizarNatural': actualizarNatural();
     break;
     case 'actualizarJuridico': //actualizarJuridico();
     break;
@@ -248,7 +248,89 @@ function eliminarCliente()
 }
 function actualizarNatural()
 {
+    $oRN_Cliente = new RN_Cliente;
+    $osCliente = new Structure_Cliente;
+
+    $oRN_Natural = new RN_Natural;
+    $osNatural = new Structure_Natural;
+
+    $idCliente = $_POST['idCliente'];
+    $nombre = $_POST['nombre'];
+    $apPaterno = $_POST['apPaterno'];
+    $apMaterno = $_POST['apMaterno'];
+    $fechanacimiento = $_POST['fechanacimiento'];
+    $ci = $_POST['ci'];
+    $genero = $_POST['genero'];
+
+    $direccion = $_POST['direccion'];
+    $telefonoFijo =$_POST['telefonoFijo'];
+    $telefonoCelular = $_POST['telefonoCelular'];
+
+    $Verificar = $oRN_Natural->VerificarCI($ci);
     
+    if ($Verificar == true)
+    {    
+        $osCliente->idCliente->SetValue($idCliente);
+        $osCliente->direccion->SetValue($direccion);
+        $osCliente->telefonoFijo->SetValue($telefonoFijo);
+        $osCliente->telefonoCelular->SetValue($telefonoCelular);
+    
+        $Cliente = $oRN_Cliente->UpdateCliente($osCliente);
+    
+        if($Cliente == true)
+        {
+            $osNatural->idCliente->SetValue($idCliente);
+            $osNatural->nombre->SetValue($nombre);
+            $osNatural->apPaterno->SetValue($apPaterno);
+            $osNatural->apMaterno->SetValue($apMaterno);
+            $osNatural->fechanacimiento->SetValue($fechanacimiento);
+            $osNatural->ci->SetValue($ci);
+            $osNatural->genero->SetValue($genero);
+        
+            $Natural = $oRN_Natural->UpdateNatural($osNatural);
+            
+            if($Natural == true)
+            {
+                header("location:../index.php?mnu=c-cliente-list");
+                
+            //     echo "
+            //     <script>
+            //         setTimeout('redirigir()',3000);
+
+            //         function redirigir(){
+            //             window.location = '../index.php?mnu=c-cliente-list';
+            //         }
+            //     </script>
+            //     ";
+            //     echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
+            //     <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+            //     <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+            //       <span aria-hidden='true'>&times;</span>
+            //     </button>
+            //   </div";
+            }
+            else
+            {
+                echo "No se cumplio con el requisito en natural";
+            }
+        }
+        else
+        {
+            echo "No se pudo actualizar Tabla Cliente en idCliente=" .$idCliente;
+        }
+    
+        
+    }
+    else
+    {
+        echo "El ci ya se encuentra registrador en otro cliente";
+    }
+
+    
+
+    
+
+
 }
 function actualizarJuridico()
 {

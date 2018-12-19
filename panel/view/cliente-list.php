@@ -5,42 +5,42 @@ if ( !isset($_SESSION["ACL"]) )
     header("location: index.php");
 }
 // Listar El cliente
-$tipoClienteN = "";
-$mostrarPila = false;
-if(isset($_SESSION["UpdateCliente"]))
-{
-    $UpdateCliente = $_SESSION["UpdateCliente"];
+// $tipoClienteN = "";
+// $mostrarPila = false;
+// if(isset($_SESSION["UpdateCliente"]))
+// {
+//     $UpdateCliente = $_SESSION["UpdateCliente"];
 
-    $tipoCliente = $UpdateCliente['tipoCliente']?$UpdateCliente['tipoCliente']:"";
-    if($tipoCliente == 'Natural')
-    {
-        $idCliente = $UpdateCliente['idCliente'];
-        $nombre = $UpdateCliente['nombre'];
-        $apPaterno = $UpdateCliente['apPaterno'];
-        $apMaterno = $UpdateCliente['apMaterno'];
-        $fechanacimiento = $UpdateCliente['fechanacimiento'];
-        $ci = $UpdateCliente['ci'];
-        $direccion = $UpdateCliente['direccion'];
-        $telefonoFijo = $UpdateCliente['telefonoFijo'];
-        $telefonoCelular = $UpdateCliente['telefonoCelular'];
-        //$mostrarPila = true;
-    }
-    else
-    {
-        $idCliente = $UpdateCliente['idCliente'];
-        $razonSocial = $UpdateCliente['razonSocial'];
-        $rptelegal = $UpdateCliente['rpteLegal'];
-        $nit = $UpdateCliente['nit'];
-        $direccion = $UpdateCliente['direccion'];
-        $telefonoFijo = $UpdateCliente['telefonoFijo'];
-        $telefonoCelular = $UpdateCliente['telefonoCelular'];
+//     $tipoCliente = $UpdateCliente['tipoCliente']?$UpdateCliente['tipoCliente']:"";
+//     if($tipoCliente == 'Natural')
+//     {
+//         $idCliente = $UpdateCliente['idCliente'];
+//         $nombre = $UpdateCliente['nombre'];
+//         $apPaterno = $UpdateCliente['apPaterno'];
+//         $apMaterno = $UpdateCliente['apMaterno'];
+//         $fechanacimiento = $UpdateCliente['fechanacimiento'];
+//         $ci = $UpdateCliente['ci'];
+//         $direccion = $UpdateCliente['direccion'];
+//         $telefonoFijo = $UpdateCliente['telefonoFijo'];
+//         $telefonoCelular = $UpdateCliente['telefonoCelular'];
+//         //$mostrarPila = true;
+//     }
+//     else
+//     {
+//         $idCliente = $UpdateCliente['idCliente'];
+//         $razonSocial = $UpdateCliente['razonSocial'];
+//         $rptelegal = $UpdateCliente['rpteLegal'];
+//         $nit = $UpdateCliente['nit'];
+//         $direccion = $UpdateCliente['direccion'];
+//         $telefonoFijo = $UpdateCliente['telefonoFijo'];
+//         $telefonoCelular = $UpdateCliente['telefonoCelular'];
 
-    }
-}
-else
-{
-    $_SESSION["UpdateCliente"] = array();
-}
+//     }
+// }
+// else
+// {
+//     $_SESSION["UpdateCliente"] = array();
+// }
 
 
 
@@ -336,13 +336,6 @@ $ListarClientesGeneral.="";
                                     ?>
                                 </tbody>
                             </table>
-                            
-                        <script type="text/javascript">
-                        $(document).ready( function () 
-                        {
-                            $('#TablaPrueba').DataTable();
-                        } );
-                        </script>
                     </div>
                     </div>
                 </div>
@@ -571,13 +564,6 @@ $ListarClientesGeneral.="";
     </div>
 </div>
 </div>
-<?php if($mostrarPila){?>
-    <script>
-  $(function () {
-    $('#v-pills-tab li:v-pills-profile-tab a').tab('show')
-  })
-</script>
-<?php }?>
 <?php
 
 // echo "<pre>";

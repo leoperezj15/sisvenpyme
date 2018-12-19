@@ -71,6 +71,10 @@ $content .= "
     <script>
         $(document).ready(function()
         {
+             
+            //ejecutar tabla de clientes            
+            $('#TablaPrueba').DataTable();
+            //adicionar empleado
             $("#btn-empleado-add").click(function()
             {
                 
@@ -187,6 +191,7 @@ $content .= "
         {
             $('#TabladeClientes').DataTable({
                 "language": {
+                    "Search" : "Buscar",
                     "lengthMenu": "Mostrar _MENU_ registros por página",
                     "zeroRecords": "Nada encontrado - lo siento",
                     "info": "Mostrando página _PAGE_ de _PAGES_",
