@@ -59,7 +59,7 @@ foreach ($listarClientes as $item)
             <td>
                 <div class='btn-group' role='group'>
                     <button class='btn btn-outline-danger btn-sm btnEditar' data-tipocliente='". $item->tipoCliente->GetValue() ."' data-cliente='". $item->idCliente->GetValue() ."' type='submit' name='operacion' value='editarCliente' data-toggle='modal' data-target='.Modal_editar_cliente_" .$item->tipoCliente->GetValue(). "'>Editar</button>
-                    <button class='btn btn-sm btn-outline-warning' type='submit' name='operacion' value='eliminarCliente'>Eliminar</button>
+                    <button class='btn btn-sm btn-outline-warning btnEliminar' data-cliente='". $item->idCliente->GetValue() ."' type='submit' name='operacion' value='eliminarCliente'>Eliminar</button>
                 </div>
             </td>
             <!--</form>-->

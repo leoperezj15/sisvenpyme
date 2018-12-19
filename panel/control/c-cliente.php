@@ -220,12 +220,11 @@ function traerCliente()
 }
 function eliminarCliente()
 {
-    echo "<pre>";
-    print_r($_POST);
-    echo "</pre>";
+    // echo "<pre>";
+    // print_r($_POST);
+    // echo "</pre>";
     //estraer los datos
     $idCliente = $_POST['idCliente'];
-    $tipoCliente = $_POST['tipoCliente'];
 
     $oRN_Cliente = new RN_Cliente;
 
@@ -233,11 +232,12 @@ function eliminarCliente()
 
     if($resultado == true)
     {
-        header("location:../index.php?mnu=c-cliente-list");
+        //header("location:../index.php?mnu=c-cliente-list");
+        echo "ok";
     }
     else
     {
-        echo "no se cumplio";
+        echo "error";
     }
     
     //preguntar que tipo de cliente es
@@ -292,22 +292,6 @@ function actualizarNatural()
             if($Natural == true)
             {
                 header("location:../index.php?mnu=c-cliente-list");
-                
-            //     echo "
-            //     <script>
-            //         setTimeout('redirigir()',3000);
-
-            //         function redirigir(){
-            //             window.location = '../index.php?mnu=c-cliente-list';
-            //         }
-            //     </script>
-            //     ";
-            //     echo "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
-            //     <strong>Holy guacamole!</strong> You should check in on some of those fields below.
-            //     <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-            //       <span aria-hidden='true'>&times;</span>
-            //     </button>
-            //   </div";
             }
             else
             {

@@ -171,15 +171,29 @@ $content .= "
                             $('#JvalidationCustom05').val(data[6]);
                             $('#JvalidationCustom06').val(data[7]);
                         }
-                        
-                        
-
                     }   
                 });
+            })
+            $(".btnEliminar").click(function(){
+                idCliente = $(this).attr("data-cliente");
                 
-
-                
-
+                $.ajax({
+                    type: "POST",
+                    url : "control/c-cliente.php",
+                    data: "operacion=eliminarCliente&idCliente="+ idCliente,
+                    success: function(res){
+                        data = res.split("|");
+                        alert(res);
+                        if (data[0] == "ok")
+            			{          
+                            alert(data[1]);
+                            setTimeout("reloadPage()", 1000);
+            			}else{
+                            alert(data[1]);
+                            $("#nroDocumento").focus();
+            			}
+                    }
+                })
             })
         })
         function reloadPage()
