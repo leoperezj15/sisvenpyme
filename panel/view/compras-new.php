@@ -9,7 +9,7 @@
         
         </div>
         <div class="col-md-8 order-md-1">
-        
+            <input type="text" name="idProveedor" id="idProveedor">
         </div>
     </div>
 </div>
