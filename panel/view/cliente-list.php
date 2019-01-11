@@ -434,24 +434,23 @@ $ListarClientesGeneral.="";
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="form-check">
-                            <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" id="customRadioInline1" name="genero" class="custom-control-input" id="invalidCheck" value="Masculino" required>
-                                    <label class="custom-control-label" for="customRadioInline1">Masculino</label>
-                                </div>
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" id="customRadioInline2" name="genero" class="custom-control-input" id="invalidCheck" value="Femenino" required>
-                                    <label class="custom-control-label" for="customRadioInline2">Femenino</label>
-                                </div>
-                                <div class="valid-feedback">
-                                    Muy Bien!!
-                                </div>
-                                <div class="invalid-feedback">
-                                    Selecione una opcion.
-                                </div>
-                            </div>
+                        <div class="valid-feedback">
+                            Muy Bien!!
+                        </div>
+                        <div class="invalid-feedback">
+                            Selecione una opcion.
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input type="radio" class="custom-control-input" id="customControlValidation2" name="genero" required>
+                            <label class="custom-control-label" for="customControlValidation2">Masculino</label>
+                        </div>
+                        <div class="custom-control custom-radio mb-3">
+                            <input type="radio" class="custom-control-input" id="customControlValidation3" name="genero" required>
+                            <label class="custom-control-label" for="customControlValidation3">Femenino</label>
+                        </div>
+                        <button class="btn btn-primary" type="submit" name="operacion" value="GuardarNatural">Guardar</button>
                     </div>
-                    <button class="btn btn-primary" type="submit" name="operacion" value="GuardarNatural">Guardar</button>
+                    
                     </form>
                     </div>
                     <script>

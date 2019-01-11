@@ -19,10 +19,10 @@ if ( !isset($_SESSION["ACL"]) )
                     <td><input type='hidden' name='txtfechaNacimiento' value='".$listado->fechaNacimiento->getValue()."'>".$listado->fechaNacimiento->getValue()."</td>
                     <td><input type='hidden' name='txtci' value='".$listado->ci->getValue()."'>".$listado->ci->getValue()."</td>
                     <td>
-                    <button type='Submit' name='accion' value='Selecionar' class='btn btn-info' data-toggle='modal' data-target='#exampleModal'>
+                    <button type='Submit' name='accion' value='Selecionar' class='btn btn-sm btn-info' data-toggle='modal' data-target='#exampleModal'>
                         Selecionar
                     </button>
-                    <button type='Submit' onclick='return Confirmar(Deseas Eliminar el dato?);' name='accion' value='Eliminar' class='btn btn-danger'>
+                    <button type='Submit' onclick='return Confirmar(Deseas Eliminar el dato?);' name='accion' value='Eliminar' class='btn btn-sm btn-danger'>
                         Eliminar
                     </button>
                     </td>
@@ -80,7 +80,7 @@ if ( !isset($_SESSION["ACL"]) )
         case 'Selecionar':
             $accionAgregar = "disabled";
             $accionModificar=$accionEliminar=$accioncancelar="";
-            header("location:../index.php?mnu=c-empleado-list");
+            //header("location:../index.php?mnu=c-empleado-list");
             break;
         
         default:
@@ -149,7 +149,6 @@ if ( !isset($_SESSION["ACL"]) )
                         </div>
                         <div class="modal-footer">
                             <button name="accion"class="btn btn-success" id="btn-empleado-add">Agregar</button>
-                            <button value="btnAgregar" type="submit" name="accion" class="btn btn-warning">Agregar</button>
                             <button value="btnActualizar"  type="submit" name="accion" class="btn btn-warning">Actualizar</button>
                             <button value="btnEliminar" type="submit" name="accion" class="btn btn-danger">Eliminar</button>
                             <button value="btnCancelar" type="submit" name="accion" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
@@ -158,7 +157,6 @@ if ( !isset($_SESSION["ACL"]) )
                 </div>
             </div>
         </form>
-        <br>
         <!-- Aqui empiza en panel de navegacion total de RRHH -->
         <div class="shadow-lg p-3 mb-5 bg-white rounded">
             <div class="row">
@@ -185,7 +183,7 @@ if ( !isset($_SESSION["ACL"]) )
                             <div class="shadow-lg p-3 mb-5 bg-white rounded"><!--Cajon con sombrita-->
                                 <div class="row">
                                     <!-- table>thead>tr>(th)*4 de forma rapida ayuda a crear una tabla que contenga un thead un tr y 4 th-->
-                                    <div class="table-responsive">
+                                    <div class="table-responsive table-sm">
                                         <table class="table table-sm">
                                             <thead class="thead-dark">
                                                 

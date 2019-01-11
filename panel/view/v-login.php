@@ -75,7 +75,7 @@
         <label for="password" class="sr-only">Ingrese su password</label>
         <input type="password" id="password" class="form-control" placeholder="Ingrese su password" required>
         <input type="button" class="btn btn-lg btn-primary btn-block" id="btnSend" value="Ingresar" />
-        <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+        <p class="mt-5 mb-3 text-muted">&copy; 2018-2019</p>
 </form>
 <!--login-->
 <!-- <div class="form-signin">

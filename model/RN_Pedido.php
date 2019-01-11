@@ -44,6 +44,10 @@ class RN_Pedido extends DataBase
         return $res;
 
     }
+    function ListPedido()
+    {
+        $sql = "";
+    }
 }
                 
 ?>

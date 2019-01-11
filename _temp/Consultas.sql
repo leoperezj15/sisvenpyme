@@ -274,3 +274,7 @@ INNER JOIN view_cliente_general t7 on t1.idCliente=t7.idCliente
 WHERE t1.idtipoMovimiento=1 AND t3.idProducto=2 AND t3.idAlmacen=2
 ORDER BY t3.idAlmacen,t3.idProducto
 ---------------------------------------------------------------------------------------------------------------------------------------------------
+--ventas realizadas
+SELECT * FROM `pedido` t1
+INNER JOIN `view_cliente_general` t2 ON t1.idCliente=t2.idCliente
+---------------------------------------------------------------------------------------------------------------------------------------
