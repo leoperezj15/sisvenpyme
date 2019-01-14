@@ -2,7 +2,6 @@
 
 /**
  * @author		Leonardo Perez Justiniano
- * @company 	Blaufuß
  * @copyright 	2018
  * @version     1.0
  */
@@ -14,7 +13,7 @@ class Database
     private $serverName = "localhost";
     private $user = "root";
     private $pswd = "";
-    private $dbName = "acl";
+    private $dbName = "ventas_pyme";
         
     private $link;
     private $op = 1; // 1: xamp, 2: easyphp
@@ -95,6 +94,17 @@ class Database
         }
         
         return $array;
+    }
+
+    function RealScapeString($_sql)
+    {
+        if ($this->op == 1){
+            $res = mysqli_real_escape_string($this->link, strip_tags($_sql));
+        }else{
+            $res = mysql_real_escape_string($this->link, strip_tags($_sql));
+        }
+
+        return $res;
     }
 }
 

@@ -61,6 +61,7 @@ $content .= "
     <script src="view/plugin/jquery-2.0.3.min.js"></script>
     <script src="view/plugin/subcategoriaBycategoria.js"></script>
     <script src="view/plugin/fechayhora.js"></script>
+    <script src="view/js/ajax/1.12.4/jquery.min.js"></script>
     <!-- Bootstrap on line -->
     <link rel="stylesheet" href="view/css/bootstrap.min.css">
     <link rel="stylesheet" href="view/css/jquery.dataTables.min.css">

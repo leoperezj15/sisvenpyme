@@ -46,4 +46,47 @@ class RN_Almacen extends DataBase
         
         return $list;//devolver una lista[]
     }
+    function ListarAlmacen($_page,$_query,$_per_page)
+    {
+        $tables="almacen";
+        $campos="*";
+        $sWhere=" Nombre LIKE '%".$query."%'";
+        $sWhere.=" order by Nombre";
+
+        include 'control/almacen/pagination.php';
+
+        $adjacents  = 4;
+
+        $offset = ($page - 1) * $per_page;
+
+        $sql1 = "SELECT count(*) AS numrows FROM $tables where $sWhere ";
+        $res = $this->Execute($sql1);
+
+        if($this->ConstainsData($res))
+        {
+            if($row = $this->FetchArray($res))
+            {
+                $numrows = $row['numrows'];
+            }
+        }
+        $total_pages = ceil($numrows/$per_page);
+
+        $sql2 = "SELECT $campos FROM  $tables where $sWhere LIMIT $offset,$per_page";
+        $res2 = $this->Execute($sql2);
+
+        if($this->ConstainsData($res2))
+        {
+            if($row2 = $this->FetchArray($res2))
+            {
+                $camposAlmacen = array(
+                    'idAlmacen' => $row2['idAlmacen'],
+                    'Nombre' => $row2['Nombre'],
+                    'Sigla' => $row2['Sigla'],
+                    'idSucrusal' => $row2['idSucursal'],
+            );
+            }
+        }
+        return $camposAlmacen;
+
+    }
 }
