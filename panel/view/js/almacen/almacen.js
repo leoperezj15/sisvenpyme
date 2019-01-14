@@ -56,6 +56,7 @@ $( "#edit_almacen" ).submit(function( event ) {
 
 $( "#add_almacen" ).submit(function( event ) {
   var parametros = $(this).serialize();
+  alert(parametros);
     $.ajax({
             type: "POST",
             url: "control/almacen/guardar_almacen.php",
