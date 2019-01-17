@@ -8,10 +8,11 @@ if($action == 'ajax')
 {
 	$query = mysqli_real_escape_string($con,(strip_tags($_REQUEST['query'], ENT_QUOTES)));
 
-	$tables="almacen";
-	$campos="*";
-	$sWhere=" Nombre LIKE '%".$query."%' ";
-	$sWhere.=" order by Nombre ";
+	$tables="almacen t1";
+	$campos="t1.idAlmacen, t1.Nombre, t1.Sigla, t2.Nombre AS Sucursal";
+	$inner="INNER JOIN `sucursal` t2 on t1.idSucursal=t2.idSucursal ";
+	$sWhere=" t1.Nombre LIKE '%".$query."%' ";
+	$sWhere.=" order by t1.Nombre ";
 	
 	
 	include 'pagination.php'; //include pagination file
@@ -26,11 +27,10 @@ if($action == 'ajax')
 	else {echo mysqli_error($con);}
 	$total_pages = ceil($numrows/$per_page);
 	//main query to fetch the data
-	$query = mysqli_query($con,"SELECT $campos FROM  $tables where $sWhere LIMIT $offset,$per_page");
+	$query = mysqli_query($con,"SELECT $campos FROM  $tables $inner where $sWhere LIMIT $offset,$per_page");
 	//loop through fetched data
 	
-	if ($numrows>0){
-		
+	if ($numrows>0){	
 	?>
 		<div class="table-responsive">
 			<table class="table table-sm table-striped table-hover ">
@@ -39,7 +39,7 @@ if($action == 'ajax')
 						<th class='text-center'>Código</th>
 						<th>Nombre</th>
 						<th>Sigla</th>
-						<th>idSucursal</th>
+						<th>Sucursal</th>
 						<th>Operacion</th>
 					</tr>
 				</thead>
@@ -50,17 +50,17 @@ if($action == 'ajax')
 							$idAlmacen=$row['idAlmacen'];
 							$Nombre=$row['Nombre'];
 							$Sigla=$row['Sigla'];
-							$idSucursal=$row['idSucursal'];						
+							$Sucursal=$row['Sucursal'];						
 							$finales++;
 						?>	
 						<tr class="<?php echo $text_class;?>">
 							<td class='text-center'><?php echo $idAlmacen;?></td>
 							<td><?php echo $Nombre;?></td>
 							<td><?php echo $Sigla;?></td>
-							<td><?php echo $idSucursal;?></td>
+							<td><?php echo $Sucursal;?></td>
 							<td>
-								<a href="#"  data-target="#editAlmacenModal" class="edit btn btn-warning" data-toggle="modal" data-idAlmacen='<?php echo $idAlmacen;?>' data-nombre="<?php echo $Nombre?>" data-sigla="<?php echo $Sigla?>" data-sucursal="<?php echo $idSucursal?>"><i class="material-icons" data-toggle="tooltip" title="Editar" >&#xE254;</i>Editar</a>
-								<a href="#deleteAlmacenModal" class="delete btn btn-danger" data-toggle="modal" data-idAlmacen="<?php echo $idAlmacen;?>"><i class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i>Eliminar</a>
+								<a href="#"  data-target="#editAlmacenModal" class="edit btn btn-warning" data-toggle="modal" data-idalmacen="<?php echo $idAlmacen;?>"  data-nombre="<?php echo $Nombre?>" data-sigla="<?php echo $Sigla?>" data-sucursal="<?php echo $Sucursal?>" >Editar</a>
+								<a href="#deleteAlmacenModal" class="delete btn btn-danger" data-toggle="modal" data-idAlmacen="<?php echo $idAlmacen;?>">Eliminar</a>
                     		</td>
 						</tr>
 						<?php }?>

@@ -23,7 +23,7 @@ class RN_Cliente extends DataBase
      */
     function GetCliente($_NroDocumento)
     {
-        $sql = "select * from `view_cliente_general` where NroDocumento = '".$_NroDocumento."'";
+        $sql = "select * from `view_cliente_general_activo` where NroDocumento = '".$_NroDocumento."'";
         $res = $this->Execute($sql);
         
         $osClienteGeneral = new Structure_ClienteGeneral;
@@ -47,7 +47,7 @@ class RN_Cliente extends DataBase
     }
     function GetListCliente()
     {
-        $sql = "SELECT * FROM `view_cliente_general` order by idCliente";
+        $sql = "SELECT * FROM `view_cliente_general_activo` order by idCliente";
         $res = $this->Execute($sql);
         
         $list = array();

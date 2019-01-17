@@ -141,17 +141,17 @@ if($listaAlmacen != null)
     foreach($listaAlmacen as $item)
     {
         $idAlmacen = $item->idAlmacen->getValue();
-        $nombre = $item->nombre->getValue();
-        $abrev = $item->abrev->getValue();
-        $Sucursal = $item->Sucursal->nombre->getValue();
+        $nombre = $item->Nombre->getValue();
+        $abrev = $item->Sigla->getValue();
+        $Sucursal = $item->Sucursal->Nombre->getValue();
 
-        $ListarAlamcen[] = array(
+        $ListarAlmacen[] = array(
             "idAlmacen" => $idAlmacen,
             "nombre" => $nombre,
             "abrev" => $abrev,
             "Sucursal" => $Sucursal
         );
-        $mostrarAlmacen .="<option value=".$idAlmacen.">".$idAlmacen." ".$nombre." Sucursal: ".$Sucursal."</option>";
+        $mostrarAlmacen .="<option value=".$idAlmacen.">".$nombre." Sucursal: ".$Sucursal."</option>";
     }
     
 }

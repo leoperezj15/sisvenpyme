@@ -18,10 +18,9 @@ class RN_Almacen extends DataBase
     }
     function GetAlmacenList()
     {
-        $sql = "SELECT t1.idAlmacen AS t1_idAlmacen,t1.nombre AS t1_nombre,t1.abrev AS t1_abrev,t2.nombre AS t2_nombre 
+        $sql = "SELECT t1.idAlmacen AS t1_idAlmacen,t1.Nombre AS t1_Nombre,t1.Sigla AS t1_Sigla,t2.Nombre AS t2_Nombre 
         FROM almacen t1
         INNER JOIN sucursal t2 on t1.idSucursal=t2.idSucursal
-        WHERE t1.estado='Activado'
         ORDER BY t1.idAlmacen ASC";
         $res = $this->Execute($sql);
         
@@ -34,17 +33,17 @@ class RN_Almacen extends DataBase
                 $osSucursal = new Structure_Sucursal;
 
                 $osAlmacen->idAlmacen->SetValue($item["t1_idAlmacen"]);
-                $osAlmacen->nombre->SetValue($item["t1_nombre"]);
-                $osAlmacen->abrev->SetValue($item["t1_abrev"]);
-                $osSucursal->nombre->SetValue($item["t2_nombre"]);
+                $osAlmacen->Nombre->SetValue($item["t1_Nombre"]);
+                $osAlmacen->Sigla->SetValue($item["t1_Sigla"]);
+                $osSucursal->Nombre->SetValue($item["t2_Nombre"]);
                 
                 $osAlmacen->Sucursal = $osSucursal;
 
-                $list[] = $osAlmacen;                
+                $listAlmacen[] = $osAlmacen;                
             }            
         }
         
-        return $list;//devolver una lista[]
+        return $listAlmacen;//devolver una lista[]
     }
     function ListarAlmacen($_page,$_query,$_per_page)
     {

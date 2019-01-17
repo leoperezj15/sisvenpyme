@@ -20,12 +20,16 @@ function load(page){
 }
 $('#editAlmacenModal').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget) // Button that triggered the modal
+
+  var idalmacen = button.data('idalmacen')
+  $('#edit_idalmacen').val(idalmacen)
   var nombre = button.data('nombre') 
   $('#edit_nombre').val(nombre)
   var sigla = button.data('sigla') 
   $('#edit_sigla').val(sigla)
-  var idAlmacen = button.data('idAlmacen') 
-  $('#edit_idAlmacen').val(idAlmacen)
+  var sucursal = button.data('sucursal')
+  $('#edit_sucursal').val(sucursal)
+
 })
 
 $('#deleteAlmacenModal').on('show.bs.modal', function (event) {

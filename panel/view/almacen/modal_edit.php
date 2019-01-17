@@ -9,15 +9,14 @@
 					<div class="modal-body">					
 						<div class="form-group">
 							<label>Código</label>
-							<input type="text" name="edit_code"  id="edit_code" class="form-control" disabled required>
-							<input type="hidden" name="edit_id" id="edit_id" >
+							<input type="text" name="edit_idalmacen"  id="edit_idalmacen" class="form-control" disabled required>
 						</div>
 						<div class="form-group">
 							<label>Nombre</label>
 							<input type="text" name="edit_nombre" id="edit_nombre" class="form-control" required>
 						</div>
 						<div class="form-group">
-							<label>Sigla/label>
+							<label>Sigla</label>
 							<input type="text" name="edit_sigla" id="edit_sigla" class="form-control" required>
 						</div>
 						<div class="form-group">

@@ -6,20 +6,18 @@ require_once "field.inc";
 class Structure_Sucursal
 {
 	public $idSucursal;
-	public $nombre;
-	public $descripcion;
-	public $telefonofijo;
-	public $estado;
-    public $abrev;
+	public $Nombre;
+	public $Ubicacion;
+	public $Descripcion;
+	public $Direccion;
 
 	function __construct()
 	{
 		$this->idSucursal = new Field("int", true);
- 		$this->nombre = new Field("varchar");
- 		$this->descripcion = new Field("varchar");
-		$this->telefonofijo = new Field("varchar");
- 		$this->estado = new Field("enum");
- 		$this->abrev = new Field("varchar");
+ 		$this->Nombre = new Field("varchar");
+ 		$this->Ubicacion = new Field("varchar");
+		$this->Descripcion = new Field("varchar");
+ 		$this->Direccion = new Field("varchar");
 	}
 
 }

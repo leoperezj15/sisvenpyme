@@ -13,18 +13,17 @@ class Structure_Almacen
 {
 
  	public $idAlmacen;
- 	public $nombre;
- 	public $abrev;
+ 	public $Nombre;
+ 	public $Sigla;
  	public $idSucursal;
-    public $estado;
 
     public $Sucursal; 
  
     function __construct()
     { 
  		$this->idAlmacen = new Field("int", true);
- 		$this->nombre = new Field("varchar");
- 		$this->abrev = new Field("varchar");
+ 		$this->Nombre = new Field("varchar");
+ 		$this->Sigla = new Field("varchar");
  		$this->idSucursal = new Field("int");
         $this->estado = new Field("enum");
 
