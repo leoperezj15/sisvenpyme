@@ -10,7 +10,7 @@
                     <h2>Administrar <b>Almacenes</b></h2>
                 </div>
                 <div class="col-sm-6">
-                    <a href="#addAlmacenModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Agregar Nuevo Almacen</span></a>
+                    <a href="#addAlmacenModal" class="btn btn-success" data-toggle="modal"><span>Agregar Nuevo Almacen</span></a>
                 </div>
             </div>
         </div>

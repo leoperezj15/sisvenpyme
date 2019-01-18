@@ -25,10 +25,12 @@ $('#editAlmacenModal').on('show.bs.modal', function (event) {
   $('#edit_idalmacen').val(idalmacen)
   var nombre = button.data('nombre') 
   $('#edit_nombre').val(nombre)
-  var sigla = button.data('sigla') 
+  var sigla = button.data('sigla')
   $('#edit_sigla').val(sigla)
-  var sucursal = button.data('sucursal')
+  var sucursal = button.data('idsucursal')
   $('#edit_sucursal').val(sucursal)
+ // var sucursal = button.data('sucursal')
+ // $('#edit_sucursal').val(sucursal)
 
 })
 
@@ -60,7 +62,6 @@ $( "#edit_almacen" ).submit(function( event ) {
 
 $( "#add_almacen" ).submit(function( event ) {
   var parametros = $(this).serialize();
-  alert(parametros);
     $.ajax({
             type: "POST",
             url: "control/almacen/guardar_almacen.php",

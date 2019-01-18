@@ -9,7 +9,7 @@ if($action == 'ajax')
 	$query = mysqli_real_escape_string($con,(strip_tags($_REQUEST['query'], ENT_QUOTES)));
 
 	$tables="almacen t1";
-	$campos="t1.idAlmacen, t1.Nombre, t1.Sigla, t2.Nombre AS Sucursal";
+	$campos="t1.idAlmacen, t1.Nombre, t1.Sigla,t2.idSucursal, t2.Nombre AS Sucursal";
 	$inner="INNER JOIN `sucursal` t2 on t1.idSucursal=t2.idSucursal ";
 	$sWhere=" t1.Nombre LIKE '%".$query."%' ";
 	$sWhere.=" order by t1.Nombre ";
@@ -50,6 +50,7 @@ if($action == 'ajax')
 							$idAlmacen=$row['idAlmacen'];
 							$Nombre=$row['Nombre'];
 							$Sigla=$row['Sigla'];
+							$idSucursal=$row['idSucursal'];
 							$Sucursal=$row['Sucursal'];						
 							$finales++;
 						?>	
@@ -59,7 +60,7 @@ if($action == 'ajax')
 							<td><?php echo $Sigla;?></td>
 							<td><?php echo $Sucursal;?></td>
 							<td>
-								<a href="#"  data-target="#editAlmacenModal" class="edit btn btn-warning" data-toggle="modal" data-idalmacen="<?php echo $idAlmacen;?>"  data-nombre="<?php echo $Nombre?>" data-sigla="<?php echo $Sigla?>" data-sucursal="<?php echo $Sucursal?>" >Editar</a>
+								<a href="#"  data-target="#editAlmacenModal" class="edit btn btn-warning" data-toggle="modal" data-idalmacen="<?php echo $idAlmacen;?>"  data-nombre="<?php echo $Nombre?>" data-sigla="<?php echo $Sigla?>" data-idsucursal="<?php echo $idSucursal?>" data-sucursal="<?php echo $Sucursal?>" >Editar</a>
 								<a href="#deleteAlmacenModal" class="delete btn btn-danger" data-toggle="modal" data-idAlmacen="<?php echo $idAlmacen;?>">Eliminar</a>
                     		</td>
 						</tr>
