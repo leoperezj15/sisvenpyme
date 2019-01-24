@@ -44,6 +44,98 @@
     
     
     ?>
+    <!--Aqui empieza HTML5-->
+    <div class="container">
+
+        <div class="shadow-lg p-3 mb-5 bg-white rounded">
+
+            <div class="table-wrapper">
+
+                <div class="table-title">
+
+                    <div class="row">
+
+                        <div class="col-sm-6">
+
+                            <h2>Administrar <b>Productos</b></h2>
+
+                        </div>
+                        <div class="col-sm-6">
+
+                            <a href="#addProductoModal" class="btn btn-success" data-toggle="modal">
+
+                                <span>Agregar Nuevo Producto</span>
+
+                            </a>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+                <div class='col-sm-4 pull-right'>
+
+                    <div id="custom-search-input">
+
+                        <div class="input-group col-md-12">
+
+                            <input type="text" class="form-control" placeholder="Buscar"  id="q" onkeyup="load(1);" />
+
+                            <span class="input-group-btn">
+
+                                <button class="btn btn-info" type="button" onclick="load(1);">
+
+                                    <i class="fas fa-search"></i>Buscar
+
+                                </button>
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class='clearfix'></div>
+
+                <hr>
+
+                <div id="loader"></div><!-- Carga de datos ajax aqui -->
+                <div id="resultados"></div><!-- Carga de datos ajax aqui -->
+                <div class='outer_div'></div><!-- Carga de datos ajax aqui -->
+
+            </div>
+
+        </div>
+
+
+
+        </div>
+        <!-- Edit Modal HTML -->
+        <?php include("view/producto/modal_add.php");?>
+        <!-- Edit Modal HTML -->
+        <?php include("view/producto/modal_edit.php");?>
+        <!-- Delete Modal HTML -->
+        <?php include("view/producto/modal_delete.php");?>
+
+        <script src="view/js/producto/producto.js"></script>
+
+
+
+
+
+
+    <!--Aqui termina HTML5-->
+
+
+
+
+
+
+
+
     <div class="container">
         <form action="" method="post"> <!-- Opcional para recivir foto se debe de agregar ectypy="multipart" -->
             <!-- (label{lbl$}+input[name="txt$" placeholder="" id="txt$" require]+br)*6   //ojo para crear label + input y br de forma mas rapida-->

@@ -62,7 +62,7 @@ if($action == 'ajax')
                             $paginaweb=$row['paginaWeb'];				
 							$finales++;
 						?>	
-						<tr class="<?php echo $text_class;?> small">
+						<tr class=" small"><!--<?php //echo $text_class;?>-->
 							<td class='text-center'><strong><?php echo $idproveedor;?></strong></td>
 							<td><strong><?php echo $nit;?></strong></td>
 							<td><?php echo $nombre;?></td>
