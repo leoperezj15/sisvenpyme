@@ -88,4 +88,27 @@ class RN_Almacen extends DataBase
         return $camposAlmacen;
 
     }
+    function listarAlmacenPorSucursal($_idSucursal)
+    {
+        $sql = "select * from almacen where idSucursal=$_idSucursal";
+        $res = $this->Execute($sql);
+        $list = array();
+        if ($this->ContainsData($res)){
+            $data = $this->DataListStructure($res);
+            foreach($data as $item)
+            {
+                $osAlmacen = new Structure_Almacen;
+
+                $osAlmacen->idAlmacen->SetValue($item["idAlmacen"]);
+                $osAlmacen->Nombre->SetValue($item["Nombre"]);
+                $osAlmacen->Sigla->SetValue($item["Sigla"]);
+                $osAlmacen->idSucursal->SetValue($item["idSucursal"]);
+
+                $listAlmacen[] = $osAlmacen;                
+            }            
+        }
+        
+        return $listAlmacen;//devolver una lista[]
+
+    }
 }

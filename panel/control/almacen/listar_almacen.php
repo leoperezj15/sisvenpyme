@@ -15,7 +15,7 @@ if($action == 'ajax')
 	$sWhere.=" order by t1.Nombre ";
 	
 	
-	include 'pagination.php'; //include pagination file
+	include '../config/pagination.php'; //include pagination file
 	//pagination variables
 	$page = (isset($_REQUEST['page']) && !empty($_REQUEST['page']))?$_REQUEST['page']:1;
 	$per_page = intval($_REQUEST['per_page']); //how much records you want to show

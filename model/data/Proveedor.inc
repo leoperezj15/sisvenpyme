@@ -12,7 +12,8 @@ class Structure_Proveedor
  {
  	public $idProveedor;
  	public $hash;
- 	public $company;
+	public $nit;
+ 	public $nombre;
  	public $contacto;
  	public $direccion;
  	public $telefonoFijo;
@@ -25,7 +26,8 @@ class Structure_Proveedor
  	{
  		$this->idProveedor = new Field("int", true);
  		$this->hash = new Field("varchar");
- 		$this->company = new Field("varchar");
+		$this->nit = new Field("int");
+ 		$this->nombre = new Field("varchar");
  		$this->contacto = new Field("varchar");
  		$this->direccion = new Field("varchar");
  		$this->telefonoFijo = new Field("varchar");

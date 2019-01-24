@@ -10,7 +10,7 @@
 
 </div>
 
-
+<script src="view/ico/fontawesome/js/all.js"></script>
 <script src="view/js/popper.min.js"></script>
 <script src="view/js/bootstrap.min.js"></script>
 <script src="view/js/bootstrap.js"></script>
