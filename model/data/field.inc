@@ -2,8 +2,7 @@
 
 /**
  * @author		Leonardo Perez Justiniano
- * @company 	Blaufuﬂ
- * @copyright 	2018
+ * @copyright 	2019
  * @version     1.0
  */
 

@@ -66,6 +66,7 @@ $content .= "
     <link rel="stylesheet" href="view/css/bootstrap.min.css">
     <link rel="stylesheet" href="view/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="view/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="view/css/switch.css">
     <!-- <script src="view/js/jquery-3.3.1.slim.min.js"></script>-->
     <!--<script src="view/plugin/jquery-2.0.3.min.js"></script>-->
     

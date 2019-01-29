@@ -278,3 +278,16 @@ ORDER BY t3.idAlmacen,t3.idProducto
 SELECT * FROM `pedido` t1
 INNER JOIN `view_cliente_general` t2 ON t1.idCliente=t2.idCliente
 ---------------------------------------------------------------------------------------------------------------------------------------
+--select de producto
+SELECT t1.*, 
+t2.idsubCategoria as t2_idsubCategoria, 
+t2.nombre as t2_nombre,
+t3.idCategoria as t3_idCategoria,
+t3.nombre as t3_nombre,
+t4.idunidadMedida as t4_idunidadMedida, 
+t4.nombre as t4_nombre,
+t4.abrev as t4_abrev 
+FROM `producto` t1
+INNER JOIN `subcategoria` t2 on t1.idsubCategoria=t2.idsubCategoria
+INNER JOIN `categoria` t3 on t2.idCategoria=t3.idCategoria
+INNER JOIN `unidadmedida` t4 on t1.idunidadMedida=t4.idunidadMedida

@@ -37,10 +37,14 @@ $('#editProductoModal').on('show.bs.modal', function (event) {
   $('#edit_peso').val(peso)
   var madein = button.data('madein')
   $('#edit_madein').val(madein)
+  var idcategoria = button.data('idcategoria')
+  $('#comboCategoria').val(idcategoria)
   var idsubcategoria = button.data('idsubcategoria')
-  $('#edit_idsubcategoria').val(idsubcategoria)
+  $('#comboSubCategoria').val(idsubcategoria)
   var idunidadmedida = button.data('idunidadmedida')
-  $('#edit_idunidadmedida').val(idunidadmedida)
+  $('#ctn-SubCategoria').val(idsubcategoria)
+  var idunidadmedida = button.data('idunidadmedida')
+  $('#comboUnidadMedida').val(idunidadmedida)
  
 
 })

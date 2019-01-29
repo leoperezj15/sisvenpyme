@@ -163,7 +163,7 @@ if ( isset($_POST["fn"]) )
 
                 $cboSubCategoria = "
                 <label for='comboSubCategoria'>Selecione SubCategoria</label>
-                <select class='custom-select' id='comboSubCategoria'>
+                <select class='custom-select' name='comboSubCategoria' id='comboSubCategoria'>
                 
                 ";
                 foreach ($listarSubCategorias as $item2)

@@ -1,6 +1,9 @@
 <div class="container">
   <!-- Content here -->
   <div class="row">
+    <div class="center">
+        <input type="checkbox" name="" id="">
+    </div>
     <div class="col-12 col-sm-12 col-md-8">
         <div class="shadow-lg p-3 mb-5 bg-white rounded">
             <div id="demo" class="carousel slide" data-ride="carousel">
@@ -45,4 +48,8 @@
         </div>
     </div>
   </div>
+</div>
+<hr>
+<div class="center">
+    <input type="checkbox" name="" id="">
 </div>
