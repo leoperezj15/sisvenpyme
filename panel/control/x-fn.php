@@ -39,6 +39,7 @@ if ( isset($_POST["fn"]) )
                 $idUsuario = $oUsuario->idUsuario->GetValue();
                 $usuario = $oUsuario->username->GetValue();
                 $email = $oUsuario->email->GetValue();
+                $idEmpleado = $oUsuario->idEmpleado->GetValue();
                 //
                 
                 $oRN_RolModulo  = new RN_RolModulo;
@@ -79,7 +80,8 @@ if ( isset($_POST["fn"]) )
                 $usuarioactivo = array(
                     "idUsuario" => $idUsuario,
                     "usuario" => $usuario,
-                    "email" => $email);
+                    "email" => $email,
+                   "idEmpleado" => $idEmpleado);
                 $_SESSION["USUARIO_ACTIVO"] = $usuarioactivo;
                 
                 $content = "ok|Datos Correctos";

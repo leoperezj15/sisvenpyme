@@ -48,7 +48,7 @@ $ListarClientesGeneral = "";
 foreach ($listarClientes as $item) 
 {
     $ListarClientesGeneral .= "
-        <tr>
+        <tr class='small'>
             <!--<form action='control/c-cliente.php' method='post'>-->
             <th scope='row'><input type='hidden' name='idCliente' value='" .$item->idCliente->GetValue(). "'>" .$item->idCliente->GetValue(). "</td>
             <td>" .$item->nombreCompleto->GetValue(). "</td>

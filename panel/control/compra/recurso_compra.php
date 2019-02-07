@@ -15,7 +15,7 @@ if(isset($_POST["idSucursal"]))
 
         $selectAlmacen = "
         <label for='almacen'>Almacen</label>
-            <select id='almacen' class='form-control'>";
+            <select name='compra_add_almacen' id='almacen' class='form-control'>";
         foreach ($listaAlmacen as $item2) {
             $selectAlmacen .= "<option value='". $item2->idAlmacen->GetValue() ."'>". $item2->Nombre->GetValue() ."</option>";
         }

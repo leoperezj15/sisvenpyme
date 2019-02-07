@@ -58,6 +58,7 @@ $('#deleteProductoModal').on('show.bs.modal', function (event) {
 
 $( "#edit_producto" ).submit(function( event ) {
   var parametros = $(this).serialize();
+
     $.ajax({
             type: "POST",
             url: "control/producto/editar_producto.php",

@@ -16,7 +16,7 @@ if (isset($_GET['term'])) {
 /* If connection to database, run sql statement. */
     if ($con) {
 
-        $fetch = mysqli_query($con, "select `idProducto`, `codigo`,  `nombre`, `descripcion`, `modelo` from producto where `nombre` like '%" . mysqli_real_escape_string($con, ($_GET['term'])) . "%' LIMIT 0 ,50"); 
+        $fetch = mysqli_query($con, "select `idProducto`, `codigo`,  `nombre`, `descripcion`, `modelo`,`pcompra` from producto where `nombre` like '%" . mysqli_real_escape_string($con, ($_GET['term'])) . "%' LIMIT 0 ,50"); 
 	
 	/* Retrieve and store in array the results of the query.*/
         while ($row = mysqli_fetch_array($fetch)) {
@@ -28,6 +28,7 @@ if (isset($_GET['term'])) {
             $row_array['codigo'] = $row['codigo'];
             $row_array['descripcion'] = $row['descripcion'];
             $row_array['modelo'] = $row['modelo'];
+            $row_array['precio'] = $row['pcompra'];
             array_push($return_producto, $row_array);
         }
 

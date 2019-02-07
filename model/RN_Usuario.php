@@ -2,7 +2,7 @@
                 
 /**
  * @author		Leonardo Perez Justiniano
- * @company 	Blaufuß
+ * @company 	Blaufuï¿½
  * @copyright 	2018
  * @version     1.0
  */
@@ -19,7 +19,7 @@ class RN_Usuario extends DataBase
     }
     
     /** 
-     * @abstract Función para obtener la lista de usuario(s) 
+     * @abstract Funciï¿½n para obtener la lista de usuario(s) 
      * @return Lista de Structure_Usuario
      */
     function GetList()
@@ -77,7 +77,7 @@ class RN_Usuario extends DataBase
     }
     
     /** 
-     * @abstract Función para obtener los Datos de usuario(s)
+     * @abstract Funciï¿½n para obtener los Datos de usuario(s)
      * @param string hash
      * @return Structure_Usuario
      */
@@ -92,6 +92,7 @@ class RN_Usuario extends DataBase
 					t1.email as t1_email,
 					t1.idRol as t1_idRol,
 					t1.estado as t1_estado,
+					t1.idEmpleado as t1_idEmpleado,
 					t2.idRol as t2_idRol,
 					t2.hash as t2_hash,
 					t2.nombre as t2_nombre,
@@ -117,7 +118,8 @@ class RN_Usuario extends DataBase
  				$osUsuario->alias->SetValue($item["t1_alias"]);
  				$osUsuario->email->SetValue($item["t1_email"]);
  				$osUsuario->idRol->SetValue($item["t1_idRol"]);
- 				$osUsuario->estado->SetValue($item["t1_estado"]);
+				$osUsuario->estado->SetValue($item["t1_estado"]);
+				$osUsuario->idEmpleado->SetValue($item["t1_idEmpleado"]);
 
 					$osRol = new Structure_Rol;
 
@@ -135,7 +137,7 @@ class RN_Usuario extends DataBase
     }
     
     /** 
-     * @abstract Función para guardar usuario
+     * @abstract Funciï¿½n para guardar usuario
      * @param Structure_Usuario osUsuario
      * @return bool
      */
@@ -163,7 +165,7 @@ class RN_Usuario extends DataBase
     }
     
     /** 
-     * @abstract Función para actualizar usuario
+     * @abstract Funciï¿½n para actualizar usuario
      * @param Structure_Usuario osUsuario
      * @return bool
      */
@@ -183,7 +185,7 @@ class RN_Usuario extends DataBase
     }
     
     /** 
-     * @abstract Función para eliminar usuario
+     * @abstract Funciï¿½n para eliminar usuario
      * @param string hash
      * @return bool
      */
@@ -196,7 +198,7 @@ class RN_Usuario extends DataBase
     }
 
 	/**
-	 * @abstract Función para autenticar usuarios
+	 * @abstract Funciï¿½n para autenticar usuarios
 	 * @param string user, string pswd
 	 * @return Structure_Usuario
 	 */

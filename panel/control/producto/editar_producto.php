@@ -13,22 +13,22 @@
         $modelo = mysqli_real_escape_string($con,(strip_tags($_POST["edit_modelo"],ENT_QUOTES)));
         $peso = intval($_POST["edit_peso"]);
         $madein = mysqli_real_escape_string($con,(strip_tags($_POST["edit_madein"],ENT_QUOTES)));
-        $idsubCategoria = intval($_POST["edit_idsubCategoria"]);
-        $idunidadMedida = intval($_POST["edit_idunidadMedida"]);
+        $idsubCategoria = intval($_POST["comboSubCategoria"]);
+        $idunidadMedida = intval($_POST["comboUnidadMedida"]);
     
-    $sql_codigo = "SELECT codigo FROM `proveedor` WHERE codigo=$codigo AND idproducto != $idproducto";
+    $sql_codigo = "SELECT codigo FROM `producto` WHERE codigo=$codigo AND idproducto != $idproducto";
 
     $res_codigo = mysqli_num_rows(mysqli_query($con,$sql_codigo));
     
     if($res_codigo != true)
     {
-        $sql_nombre = "SELECT nombre FROM `proveedor` WHERE nombre='$nombre' AND idproducto != $idproducto";
+        $sql_nombre = "SELECT nombre FROM `producto` WHERE nombre='$nombre' AND idproducto != $idproducto";
         $res_nombre = mysqli_num_rows(mysqli_query($con,$sql_nombre));
 
         if($res_nombre != true)
         {
             // UPDATE data into database
-            $sql = "UPDATE proveedor SET codigo=".$codigo.", 
+            $sql = "UPDATE producto SET codigo=".$codigo.", 
             nombre='".$nombre."', 
             descripcion='".$descripcion."', 
             modelo='".$modelo."', 

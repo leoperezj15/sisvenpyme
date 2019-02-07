@@ -291,3 +291,15 @@ FROM `producto` t1
 INNER JOIN `subcategoria` t2 on t1.idsubCategoria=t2.idsubCategoria
 INNER JOIN `categoria` t3 on t2.idCategoria=t3.idCategoria
 INNER JOIN `unidadmedida` t4 on t1.idunidadMedida=t4.idunidadMedida
+--------------------------------------------------------------------------------------------------------------------------------------
+---listar compras 
+SELECT t1.IdCompra,
+t1.fechayHoraIngreso,
+t2.nombre,
+t2.Nit,
+concat(t3.nombre,' ',t3.apPaterno ,' ',t3.apMaterno) AS empleado,
+t1.MontoTotal,
+t1.nroFactura
+FROM `compra` t1
+INNER JOIN proveedor t2 ON t2.idProveedor=t1.idProveedor
+INNER JOIN empleado t3 on t3.idEmpleado=t1.idEmpleado

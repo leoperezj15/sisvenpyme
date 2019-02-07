@@ -2,7 +2,6 @@
                 
 /**
  * @author		Leonardo Perez Justiniano
- * @company 	Blaufuß
  * @copyright 	2018
  * @version     1.0
  */
