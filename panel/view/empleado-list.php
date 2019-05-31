@@ -20,10 +20,10 @@ if ( !isset($_SESSION["ACL"]) )
                     <td><input type='hidden' name='txtci' value='".$listado->ci->getValue()."'>".$listado->ci->getValue()."</td>
                     <td>
                     <button type='Submit' name='accion' value='Selecionar' class='btn btn-sm btn-info' data-toggle='modal' data-target='#exampleModal'>
-                        Selecionar
+                        <i class='fas fa-user-tag'></i>
                     </button>
                     <button type='Submit' onclick='return Confirmar(Deseas Eliminar el dato?);' name='accion' value='Eliminar' class='btn btn-sm btn-danger'>
-                        Eliminar
+                        <i class='fas fa-user-minus'></i>
                     </button>
                     </td>
                 </form>
@@ -184,8 +184,8 @@ if ( !isset($_SESSION["ACL"]) )
                                 <div class="row">
                                     <!-- table>thead>tr>(th)*4 de forma rapida ayuda a crear una tabla que contenga un thead un tr y 4 th-->
                                     <div class="table-responsive table-sm">
-                                        <table class="table table-sm">
-                                            <thead class="thead-dark">
+                                        <table id="TablaDeEmpleados" class="table table-sm">
+                                            <thead>
                                                 
                                                 <tr>
                                                     <th scope="col">Codigo</th>
@@ -196,11 +196,11 @@ if ( !isset($_SESSION["ACL"]) )
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
+                                                
                                                     <?php
                                                         echo $LitarEmpleados;     
                                                     ?>
-                                                </tr>
+                                        
                                             </tbody>
                                         </table>
                                     </div>

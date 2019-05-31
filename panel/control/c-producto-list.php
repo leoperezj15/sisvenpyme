@@ -10,6 +10,7 @@
 include_once "view/v-panel.php";
 include_once "view/v-producto-list.php";
 include_once "view/v-footer.php";
+include_once "config/pagination.php";
 
 
 

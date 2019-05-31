@@ -49,7 +49,7 @@ $content .= "
 </li>
 ";
 ?>
-<html lang="en">
+<html lang="es">
 <head>
 	<meta http-equiv="content-type" content="text/html" charset="utf-8" />
 	<meta name="author" content="Leonardo Perez" />
@@ -206,6 +206,20 @@ $content .= "
         $(document).ready( function () 
         {
             $('#TabladeClientes').DataTable({
+                "language": {
+                    "Search" : "Buscar",
+                    "lengthMenu": "Mostrar _MENU_ registros por página",
+                    "zeroRecords": "Nada encontrado - lo siento",
+                    "info": "Mostrando página _PAGE_ de _PAGES_",
+                    "infoEmpty": "No hay registros disponibles",
+                    "infoFiltered": "(filtrado de _MAX_ registros totales)"
+                }
+            } );
+        } );
+        //aqui se añadio  reacion a la tabla de Empleados
+        $(document).ready( function () 
+        {
+            $('#TablaDeEmpleados').DataTable({
                 "language": {
                     "Search" : "Buscar",
                     "lengthMenu": "Mostrar _MENU_ registros por página",

@@ -203,6 +203,7 @@ $ListarClientesGeneral.="";
     </div>
 </div>
 <!--Fin de Modal Editar Cliente Natural-->
+
 <!--inicio de modal de Cliente Juridico-->
 <div class="modal fade Modal_editar_cliente_Juridico" tabindex="-1" role="dialog" aria-labelledby="Modal_editar_cliente_Juridico" aria-hidden="true">
     <div class="modal-dialog modal-lg">

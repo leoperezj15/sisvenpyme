@@ -23,7 +23,7 @@ if($action == 'ajax')
 	$sWhere=" t1.nombre LIKE '%".$query."%' ";
 	$sWhere.=" order by idProducto ";
 	
-	//include("../config/pagination.php;");
+	//include_once "../config/pagination.php";
 	//include "../config/pagination.php"; //include pagination file
 	include("../config/pagination.php");
 	//pagination variables
